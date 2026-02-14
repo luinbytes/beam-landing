@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Templates — Beam</title>
+    <meta name="description" content="Professional quote templates for plumbers, electricians, HVAC, and contractors. Ready to use.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beam: {
+                            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74',
+                            400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c',
+                            800: '#9a3412', 900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .card-shadow:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Beam</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                    <a href="index.html#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                    <a href="index.html#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                    <a href="index.html#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-24 pb-12 md:pt-32 md:pb-16 bg-gradient-to-br from-beam-50 to-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                Professional templates for every trade
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Start with proven templates. Customize once, reuse forever. Save hours every week.
+            </p>
+        </div>
+    </section>
+
+    <!-- Templates Grid -->
+    <section class="py-12 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Plumbing Repair -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <span class="text-5xl">🔧</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Plumbing Repair</h3>
+                        <p class="text-gray-600 text-sm mb-4">Leak repairs, pipe work, drain clearing, emergency callouts. Includes labor rates and common materials.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 15+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electrical Install -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center">
+                        <span class="text-5xl">⚡</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Electrical Install</h3>
+                        <p class="text-gray-600 text-sm mb-4">Socket installation, lighting, fuse boards, rewiring. NICEIC-compliant structure.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 20+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HVAC Service -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center">
+                        <span class="text-5xl">❄️</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">HVAC Service</h3>
+                        <p class="text-gray-600 text-sm mb-4">Boiler service, AC installation, heating repairs, annual maintenance contracts.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 18+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Maintenance -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                        <span class="text-5xl">🛠️</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">General Maintenance</h3>
+                        <p class="text-gray-600 text-sm mb-4">Handyman work, repairs, installations, odd jobs. Flexible structure for varied work.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 12+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bathroom Remodel -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-5xl">🚿</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Bathroom Remodel</h3>
+                        <p class="text-gray-600 text-sm mb-4">Full bathroom refits, suite installation, tiling, plumbing. Materials + labor breakdown.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 25+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kitchen Fit-Out -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                        <span class="text-5xl">🍳</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Kitchen Fit-Out</h3>
+                        <p class="text-gray-600 text-sm mb-4">Kitchen installation, worktops, appliances, plumbing + electrical integration.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 30+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Painting & Decorating -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center">
+                        <span class="text-5xl">🎨</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Painting & Decorating</h3>
+                        <p class="text-gray-600 text-sm mb-4">Interior/exterior painting, wallpapering, prep work. Room-by-room structure.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 15+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roofing -->
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden card-shadow transition-all">
+                    <div class="h-32 bg-gradient-to-br from-slate-500 to-slate-600 flex items-center justify-center">
+                        <span class="text-5xl">🏠</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Roofing</h3>
+                        <p class="text-gray-600 text-sm mb-4">Roof repairs, re-roofing, guttering, chimney work. Safety equipment included.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Pre-built line items: 18+</span>
+                            <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Use template →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Your Own -->
+                <div class="bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 overflow-hidden flex items-center justify-center min-h-[280px]">
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">+</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Create Your Own</h3>
+                        <p class="text-gray-600 text-sm mb-4">Build a custom template for your specific trade or workflow.</p>
+                        <a href="index.html#cta" class="text-beam-600 hover:text-beam-700 font-medium text-sm">Get started →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-br from-beam-500 to-beam-600">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to start quoting?</h2>
+            <p class="text-xl text-orange-100 mb-8">Pick a template, customize it, and send your first quote in under 5 minutes.</p>
+            <a href="index.html#cta" class="inline-block bg-white text-beam-600 font-semibold px-8 py-3 rounded-lg hover:bg-orange-50 transition">
+                Get Started Free →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-white">Beam</span>
+                    </div>
+                    <p class="text-sm">Professional quotes in seconds, not hours.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="index.html#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="templates.html" class="text-beam-400">Templates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:hello@beamhq.com" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2026 Beam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

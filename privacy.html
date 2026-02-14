@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Beam</title>
+    <meta name="description" content="Beam's privacy policy. Learn how we collect, use, and protect your data.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beam: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Beam</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                    <a href="index.html#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                    <a href="index.html#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                    <a href="index.html#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition">Get Started Free</a>
+                </div>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html#features" class="block text-gray-600 hover:text-gray-900">Features</a>
+                <a href="index.html#pricing" class="block text-gray-600 hover:text-gray-900">Pricing</a>
+                <a href="index.html#faq" class="block text-gray-600 hover:text-gray-900">FAQ</a>
+                <a href="index.html#cta" class="block bg-beam-500 text-white px-4 py-2 rounded-lg font-medium text-center">Get Started Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header -->
+            <div class="mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Privacy Policy
+                </h1>
+                <p class="text-gray-600">
+                    Last updated: February 14, 2026
+                </p>
+            </div>
+
+            <!-- Content -->
+            <div class="prose prose-gray max-w-none">
+                
+                <!-- Introduction -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                    <p class="text-gray-700 m-0">
+                        <strong class="text-gray-900">TL;DR:</strong> We collect only what we need to run Beam — your email, business info, and quote data. We don't sell your data. We keep it secure. You can delete it anytime. Questions? Email us at <a href="mailto:privacy@beamhq.com" class="text-beam-600 hover:text-beam-700">privacy@beamhq.com</a>.
+                    </p>
+                </div>
+
+                <!-- Section 1: What We Collect -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">📊</span>
+                        What Data We Collect
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        We only collect information that's necessary to provide Beam's services. Here's what we gather:
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-beam-500 pl-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Account Information</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                Email address, name, business name, phone number (for SMS delivery). This is what you give us when you sign up.
+                            </p>
+                        </div>
+
+                        <div class="border-l-4 border-beam-500 pl-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Quote Data</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                The quotes you create — line items, prices, customer names/contacts, notes, and any templates you build. This is your work; we just store it for you.
+                            </p>
+                        </div>
+
+                        <div class="border-l-4 border-beam-500 pl-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Usage Information</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                How you use Beam — which features you access, how many quotes you send, etc. This helps us improve the product and fix problems.
+                            </p>
+                        </div>
+
+                        <div class="border-l-4 border-beam-500 pl-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Payment Information</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                If you upgrade to Pro, we process payments through Stripe. We don't store your full credit card number — Stripe handles that securely.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: How We Use It -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">🎯</span>
+                        How We Use Your Data
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        Your data is used for three things:
+                    </p>
+
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span><strong class="text-gray-900">To provide the service</strong> — store your quotes, send SMS messages, generate PDFs, track approvals</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span><strong class="text-gray-900">To improve Beam</strong> — understand which features are valuable, fix bugs, build better tools</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span><strong class="text-gray-900">To communicate with you</strong> — password resets, billing receipts, important service updates (no spam, we promise)</span>
+                        </li>
+                    </ul>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mt-6">
+                        <p class="text-amber-900 text-sm m-0">
+                            <strong>We never:</strong> Sell your data to third parties, share your quotes with competitors, or use your customer data for marketing.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 3: Data Storage & Security -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">🔒</span>
+                        Data Storage & Security
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        Your data is stored on secure servers (we use industry-standard cloud providers). Here's how we protect it:
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2">Encryption</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                All data is encrypted in transit (HTTPS) and at rest. Your quotes aren't readable by anyone who shouldn't see them.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2">Access Controls</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                Only authorized team members can access user data, and only when needed for support or maintenance.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2">Regular Backups</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                Your data is backed up regularly. We can recover from problems quickly without losing your work.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2">Monitoring</h3>
+                            <p class="text-gray-600 text-sm m-0">
+                                We monitor for suspicious activity and potential security issues 24/7.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-700 mt-4">
+                        That said, no system is 100% secure. We do our best, but you should also use strong passwords and protect your login credentials.
+                    </p>
+                </section>
+
+                <!-- Section 4: Cookies -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">🍪</span>
+                        Cookies & Tracking
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        We use minimal cookies — just enough to keep you logged in and remember your preferences. Nothing creepy.
+                    </p>
+
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="w-2 h-2 bg-beam-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <p class="text-gray-700 m-0"><strong class="text-gray-900">Essential cookies</strong> — keep you logged in, remember your session</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-2 h-2 bg-beam-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <p class="text-gray-700 m-0"><strong class="text-gray-900">Preference cookies</strong> — remember your settings (like dark mode, if we add it)</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-2 h-2 bg-beam-500 rounded-full mt-2 flex-shrink-0"></span>
+                            <p class="text-gray-700 m-0"><strong class="text-gray-900">Analytics cookies</strong> — understand how people use Beam (anonymous, aggregated data)</p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-700 mt-4">
+                        You can disable cookies in your browser, but some parts of Beam might not work properly.
+                    </p>
+                </section>
+
+                <!-- Section 5: Third-Party Services -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">🔌</span>
+                        Third-Party Services
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        Beam uses a few trusted third-party services to operate. These companies have their own privacy policies:
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Stripe</h3>
+                            <p class="text-gray-600 text-sm mb-2 m-0">
+                                Processes payments for Pro subscriptions. They handle your credit card info — we don't store it.
+                            </p>
+                            <a href="https://stripe.com/privacy" target="_blank" class="text-beam-600 hover:text-beam-700 text-sm">stripe.com/privacy →</a>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Twilio</h3>
+                            <p class="text-gray-600 text-sm mb-2 m-0">
+                                Sends SMS messages on our behalf. They see phone numbers when delivering quotes, but don't store message content long-term.
+                            </p>
+                            <a href="https://www.twilio.com/legal/privacy" target="_blank" class="text-beam-600 hover:text-beam-700 text-sm">twilio.com/legal/privacy →</a>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-900 mb-1">Google Analytics</h3>
+                            <p class="text-gray-600 text-sm mb-2 m-0">
+                                Helps us understand how people use Beam (which pages are popular, where users come from). We use anonymized data only.
+                            </p>
+                            <a href="https://policies.google.com/privacy" target="_blank" class="text-beam-600 hover:text-beam-700 text-sm">policies.google.com/privacy →</a>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-700 mt-4">
+                        We don't share your quote data or customer information with these services beyond what's needed to perform their specific functions.
+                    </p>
+                </section>
+
+                <!-- Section 6: Your Rights -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">✊</span>
+                        Your Rights & Control
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        It's your data. Here's what you can do with it:
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:border-beam-300 transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-lg">📥</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Access Your Data</h3>
+                                    <p class="text-gray-600 text-sm m-0">
+                                        Request a copy of all your data (quotes, account info, etc.). We'll send it within 30 days.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:border-beam-300 transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-lg">📤</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Export Your Data</h3>
+                                    <p class="text-gray-600 text-sm m-0">
+                                        Download your quotes as PDFs or export to CSV from within Beam anytime. No need to ask us.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:border-beam-300 transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-lg">🗑️</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Delete Your Account</h3>
+                                    <p class="text-gray-600 text-sm m-0">
+                                        Close your account and delete all your data. Email us and we'll handle it within 30 days. This is permanent.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:border-beam-300 transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-lg">✏️</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Correct Your Data</h3>
+                                    <p class="text-gray-600 text-sm m-0">
+                                        Update your account info or quote details anytime from within Beam. It's your data — edit away.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-700 mt-4">
+                        To exercise any of these rights, email <a href="mailto:privacy@beamhq.com" class="text-beam-600 hover:text-beam-700">privacy@beamhq.com</a>. We'll respond within 30 days (usually much faster).
+                    </p>
+                </section>
+
+                <!-- Section 7: Data Retention -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">📅</span>
+                        Data Retention
+                    </h2>
+                    
+                    <p class="text-gray-700">
+                        We keep your data as long as your account is active. After you close your account, we delete everything within 90 days. If you're inactive for 3+ years, we may reach out to confirm you still want the account — if not, we'll delete it.
+                    </p>
+                </section>
+
+                <!-- Section 8: Contact -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">✉️</span>
+                        Questions or Concerns?
+                    </h2>
+                    
+                    <p class="text-gray-700 mb-4">
+                        If you have questions about this policy or want to exercise your data rights, reach out:
+                    </p>
+
+                    <div class="bg-beam-50 rounded-xl p-6">
+                        <div class="space-y-3">
+                            <p class="flex items-center gap-3 text-gray-700 m-0">
+                                <span class="font-semibold">Email:</span>
+                                <a href="mailto:privacy@beamhq.com" class="text-beam-600 hover:text-beam-700">privacy@beamhq.com</a>
+                            </p>
+                            <p class="flex items-center gap-3 text-gray-700 m-0">
+                                <span class="font-semibold">Response time:</span>
+                                <span>Within 30 days (usually 1-2 business days)</span>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 9: Changes -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <span class="w-8 h-8 bg-beam-100 rounded-lg flex items-center justify-center text-beam-600 text-lg">🔄</span>
+                        Changes to This Policy
+                    </h2>
+                    
+                    <p class="text-gray-700">
+                        We may update this policy occasionally. When we do, we'll change the "Last updated" date at the top and email you if it's a significant change. Continued use of Beam after changes means you accept the updated policy.
+                    </p>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-white">Beam</span>
+                    </div>
+                    <p class="text-sm">
+                        Professional quotes in seconds, not hours. Built for contractors who want to win more jobs.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="index.html#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="index.html#cta" class="hover:text-white transition">Get Early Access</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="mailto:hello@beamhq.com" class="hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="privacy.html" class="text-beam-400">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2026 Beam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth scroll for anchor links -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
