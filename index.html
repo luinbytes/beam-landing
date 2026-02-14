@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beam — Professional Quotes in Seconds, Not Hours</title>
+    <meta name="description" content="Create professional contractor quotes in seconds. PDF generation, SMS delivery, and template library. Free tier available.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beam: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #fff7ed 0%, #fff 50%, #fef3c7 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .card-shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-900 bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">Beam</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+                    <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                    <a href="#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition">Get Started Free</a>
+                </div>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#features" class="block text-gray-600 hover:text-gray-900">Features</a>
+                <a href="#pricing" class="block text-gray-600 hover:text-gray-900">Pricing</a>
+                <a href="#faq" class="block text-gray-600 hover:text-gray-900">FAQ</a>
+                <a href="#cta" class="block bg-beam-500 text-white px-4 py-2 rounded-lg font-medium text-center">Get Started Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-beam-100 text-beam-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                    <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
+                    Now in public beta — 500+ contractors already onboard
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Professional quotes in<br>
+                    <span class="gradient-text">seconds, not hours</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Stop losing jobs to slow quotes. Create professional PDFs, send via SMS, and get approved faster. Built for plumbers, electricians, and contractors who want to win more work.
+                </p>
+                
+                <!-- Email Capture -->
+                <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        required
+                        class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none transition"
+                    >
+                    <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
+                        Start Free →
+                    </button>
+                </form>
+                
+                <!-- Trust bullets -->
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500">
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        5 free quotes/month
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        No credit card required
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        Cancel anytime
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                    Sound familiar?
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl">📝</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Still creating quotes in Word or Excel?</p>
+                            <p class="text-gray-600 text-sm mt-1">Templates break, formatting is a pain, and it never looks professional.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl">⏰</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Spending 30+ minutes on each quote?</p>
+                            <p class="text-gray-600 text-sm mt-1">That's hours every week you could spend on actual billable work.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl">💸</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Losing jobs to faster competitors?</p>
+                            <p class="text-gray-600 text-sm mt-1">The first quote often wins. Speed matters more than you think.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl">📱</span>
+                        </div>
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900">Clients asking for quotes by text?</p>
+                            <p class="text-gray-600 text-sm mt-1">But you're stuck at a job site with no way to send something professional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / How It Works -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    From site visit to sent quote in 60 seconds
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    No complicated software. No learning curve. Just quotes that win jobs.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-beam-100 rounded-2xl flex items-center justify-center mx-auto mb-4 relative">
+                        <span class="text-3xl">📋</span>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Pick a template</h3>
+                    <p class="text-gray-600">
+                        Choose from our library of professional templates for plumbing, electrical, HVAC, general contracting, and more. Or create your own.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-beam-100 rounded-2xl flex items-center justify-center mx-auto mb-4 relative">
+                        <span class="text-3xl">✏️</span>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Add your line items</h3>
+                    <p class="text-gray-600">
+                        Quick-add materials and labor from your saved items. Prices auto-calculate. Add notes, photos, or terms with one tap.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-beam-100 rounded-2xl flex items-center justify-center mx-auto mb-4 relative">
+                        <span class="text-3xl">📱</span>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Send via SMS</h3>
+                    <p class="text-gray-600">
+                        Text the PDF directly to your customer. They click, review, and approve. You get notified instantly. Done.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#cta" class="inline-flex items-center gap-2 text-beam-600 font-semibold hover:text-beam-700 transition">
+                    See it in action
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Everything you need to quote faster
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Simple tools that just work. No bloat, no complexity.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📄</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Professional PDFs</h3>
+                    <p class="text-gray-600 text-sm">
+                        Clean, branded quotes that look like you spent hours on them. Your logo, your colors, your business info.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">💬</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">SMS Delivery</h3>
+                    <p class="text-gray-600 text-sm">
+                        Send quotes straight to your customer's phone. 98% open rate. Instant delivery. No email lag.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📚</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Template Library</h3>
+                    <p class="text-gray-600 text-sm">
+                        Start with proven templates for your trade. Customize once, reuse forever. Save hours every week.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">🔢</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Simple Line Items</h3>
+                    <p class="text-gray-600 text-sm">
+                        Add materials, labor, and misc costs with a tap. Auto-calculating totals, taxes, and margins. No math required.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">📱</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Mobile-First</h3>
+                    <p class="text-gray-600 text-sm">
+                        Works great on your phone. Create and send quotes from the job site, your truck, or anywhere.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-2xl">✅</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Approval Tracking</h3>
+                    <p class="text-gray-600 text-sm">
+                        Know when customers view and approve your quotes. Follow up at the right time. Close more deals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Simple pricing. No surprises.
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Start free. Upgrade when you're ready.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Free Tier -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Free</h3>
+                        <p class="text-gray-600 text-sm">Perfect for getting started</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">$0</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            5 quotes per month
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            PDF generation
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            3 basic templates
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Email support
+                        </li>
+                    </ul>
+                    <a href="#cta" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-900 text-center py-3 rounded-lg font-semibold transition">
+                        Get Started Free
+                    </a>
+                </div>
+                
+                <!-- Pro Tier -->
+                <div class="bg-white rounded-2xl p-8 border-2 border-beam-500 relative card-shadow-lg">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-beam-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Pro</h3>
+                        <p class="text-gray-600 text-sm">For serious contractors</p>
+                    </div>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">$29</span>
+                        <span class="text-gray-600">/month</span>
+                        <p class="text-sm text-beam-600 font-medium mt-1">or $249/year (save $99)</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <strong>Unlimited</strong> quotes
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            SMS delivery (100/mo included)
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            20+ premium templates
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Custom branding & logo
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Approval tracking
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <svg class="w-5 h-5 text-beam-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Priority support
+                        </li>
+                    </ul>
+                    <a href="#cta" class="block w-full bg-beam-500 hover:bg-beam-600 text-white text-center py-3 rounded-lg font-semibold transition">
+                        Start 14-Day Free Trial
+                    </a>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 text-sm mt-8">
+                Both plans include: No credit card required • Cancel anytime • Export your data anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Contractors love Beam
+                </h2>
+                <p class="text-lg text-gray-600">
+                    [PLACEHOLDER — Replace with real testimonials from early users]
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "[PLACEHOLDER: I used to spend 45 minutes on each quote. Now it takes me 2 minutes. I've closed 3 more jobs this month just by being first to respond.]"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">[Name Placeholder]</p>
+                            <p class="text-gray-500 text-sm">[Trade Placeholder], [City Placeholder]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "[PLACEHOLDER: My customers are impressed. They think I have this whole professional operation. Really it's just me and Beam on my phone.]"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">[Name Placeholder]</p>
+                            <p class="text-gray-500 text-sm">[Trade Placeholder], [City Placeholder]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                        <span class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "[PLACEHOLDER: The SMS feature alone is worth it. I send a quote while walking to my truck and by the time I'm driving, I've got an approval.]"
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">[Name Placeholder]</p>
+                            <p class="text-gray-500 text-sm">[Trade Placeholder], [City Placeholder]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 text-sm">
+                    <span class="font-semibold text-gray-900">500+</span> contractors signed up in beta • 
+                    <span class="font-semibold text-gray-900">50,000+</span> quotes created • 
+                    <span class="font-semibold text-gray-900">$2M+</span> work quoted
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Common questions
+                </h2>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="bg-gray-50 rounded-xl group" open>
+                    <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                        <span class="font-semibold text-gray-900">How does the free tier work?</span>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600">
+                        You get 5 free quotes every month, forever. No credit card required. When you're ready for more, upgrade to Pro for unlimited quotes and SMS delivery.
+                    </div>
+                </details>
+                
+                <!-- FAQ 2 -->
+                <details class="bg-gray-50 rounded-xl group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                        <span class="font-semibold text-gray-900">Do I need to be tech-savvy to use this?</span>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600">
+                        If you can send a text message, you can use Beam. We built it for contractors, not tech people. Most users create their first quote in under 2 minutes without any tutorial.
+                    </div>
+                </details>
+                
+                <!-- FAQ 3 -->
+                <details class="bg-gray-50 rounded-xl group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                        <span class="font-semibold text-gray-900">Can I customize the quotes with my logo?</span>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600">
+                        Yes! Pro users can add their logo, business colors, and contact info to every quote. Free users get a clean, professional template with their business name.
+                    </div>
+                </details>
+                
+                <!-- FAQ 4 -->
+                <details class="bg-gray-50 rounded-xl group">
+                    <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
+                        <span class="font-semibold text-gray-900">What happens if I cancel?</span>
+                        <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600">
+                        You keep access until the end of your billing period. You can export all your quotes and customer data anytime. We don't hold your data hostage.
+                    </div>
+                </details>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p class="text-gray-600">
+                    More questions? Email us at <a href="mailto:support@beamhq.com" class="text-beam-600 hover:text-beam-700 font-medium">support@beamhq.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta" class="py-16 md:py-24 bg-gradient-to-br from-beam-500 to-beam-600">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to quote faster and win more jobs?
+            </h2>
+            <p class="text-lg text-beam-100 mb-8">
+                Join 500+ contractors who've already switched to Beam. Free to start, no credit card required.
+            </p>
+            
+            <form id="cta-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email" 
+                    required
+                    class="flex-1 px-4 py-3 border-0 rounded-lg focus:ring-2 focus:ring-white focus:outline-none transition text-gray-900"
+                >
+                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
+                    Get Started Free
+                </button>
+            </form>
+            
+            <p class="text-beam-100 text-sm">
+                5 free quotes/month • No credit card • Cancel anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-white">Beam</span>
+                    </div>
+                    <p class="text-sm">
+                        Professional quotes in seconds, not hours. Built for contractors who want to win more jobs.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Templates</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="mailto:support@beamhq.com" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2026 Beam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Handler Script -->
+    <script>
+        // Simple form handling - replace with actual backend integration
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                // TODO: Replace with actual API call
+                console.log('Email captured:', email);
+                
+                // Show success message
+                const button = this.querySelector('button');
+                const originalText = button.textContent;
+                button.textContent = 'Got it! Check your email 🎉';
+                button.disabled = true;
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 3000);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
