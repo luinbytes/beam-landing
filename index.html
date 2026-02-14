@@ -93,10 +93,12 @@
     <!-- Hero Section -->
     <section class="hero-gradient pt-24 pb-16 md:pt-32 md:pb-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-2 bg-beam-100 text-beam-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-                    <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
-                    Now in public beta — 500+ contractors already onboard
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left: Copy -->
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-2 bg-beam-100 text-beam-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
+                        Trusted by 500+ contractors
                 </div>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
                     Professional quotes in<br>
@@ -140,6 +142,64 @@
                         </svg>
                         Cancel anytime
                     </span>
+                </div>
+            </div>
+
+            <!-- Right: Phone Mockup -->
+            <div class="hidden md:block">
+                <div class="relative mx-auto" style="max-width: 320px;">
+                    <!-- Phone frame -->
+                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+                        <div class="bg-white rounded-[2.5rem] overflow-hidden">
+                            <!-- Status bar -->
+                            <div class="bg-gray-100 px-6 py-2 flex justify-between items-center text-xs text-gray-600">
+                                <span>9:41</span>
+                                <div class="flex gap-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 100-2 2 2 0 100 2z" clip-rule="evenodd"/></svg>
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a.75.75 0 01.75.75v.258a33.186 33.186 0 016.668.83.75.75 0 01-.336 1.461 31.28 31.28 0 00-1.103-.232l1.702 7.545a.75.75 0 01-.387.832A4.981 4.981 0 0115 14c-.825 0-1.606-.2-2.294-.556a.75.75 0 01-.387-.832l1.77-7.849a31.743 31.743 0 00-3.339-.254v11.505l6.5.001a.75.75 0 010 1.5h-14a.75.75 0 010-1.5l6.5-.001V4.509c-1.14.025-2.256.096-3.34.254l1.771 7.85a.75.75 0 01-.387.83A4.98 4.98 0 015 14a4.98 4.98 0 01-2.294-.556.75.75 0 01-.387-.832L4.02 5.067c-.374.06-.743.125-1.103.232a.75.75 0 01-.336-1.462 33.053 33.053 0 016.668-.829V2.75A.75.75 0 0110 2z"/></svg>
+                                </div>
+                            </div>
+                            <!-- Quote preview -->
+                            <div class="p-4 space-y-3">
+                                <div class="text-center border-b pb-3">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
+                                    <div class="font-bold text-gray-900 text-sm">Quote #Q-2024-1847</div>
+                                    <div class="text-xs text-gray-500">Mike Richardson Plumbing</div>
+                                </div>
+                                <div class="text-xs text-gray-600">
+                                    <div class="font-medium text-gray-900 mb-1">Bill To:</div>
+                                    <div class="text-gray-500">Mrs. Johnson<br>42 Oak Street, Manchester</div>
+                                </div>
+                                <div class="border-t pt-3 space-y-2">
+                                    <div class="flex justify-between text-xs">
+                                        <span class="text-gray-600">Bathroom leak repair</span>
+                                        <span class="font-medium">£85.00</span>
+                                    </div>
+                                    <div class="flex justify-between text-xs">
+                                        <span class="text-gray-600">Pipe replacement (2m)</span>
+                                        <span class="font-medium">£34.00</span>
+                                    </div>
+                                    <div class="flex justify-between text-xs">
+                                        <span class="text-gray-600">Callout fee</span>
+                                        <span class="font-medium">£45.00</span>
+                                    </div>
+                                    <div class="flex justify-between text-xs pt-2 border-t font-semibold">
+                                        <span>Total</span>
+                                        <span class="text-beam-600">£164.00</span>
+                                    </div>
+                                </div>
+                                <div class="pt-2">
+                                    <div class="bg-green-50 text-green-700 text-xs text-center py-2 rounded-lg font-medium">
+                                        ✓ Sent via SMS • Viewed by customer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-beam-200 rounded-full opacity-50 blur-xl"></div>
+                    <div class="absolute -top-4 -left-4 w-16 h-16 bg-beam-300 rounded-full opacity-40 blur-lg"></div>
                 </div>
             </div>
         </div>
@@ -357,7 +417,7 @@
                         <p class="text-gray-600 text-sm">Perfect for getting started</p>
                     </div>
                     <div class="mb-6">
-                        <span class="text-4xl font-bold text-gray-900">$0</span>
+                        <span class="text-4xl font-bold text-gray-900">£0</span>
                         <span class="text-gray-600">/month</span>
                     </div>
                     <ul class="space-y-3 mb-8">
@@ -401,9 +461,9 @@
                         <p class="text-gray-600 text-sm">For serious contractors</p>
                     </div>
                     <div class="mb-6">
-                        <span class="text-4xl font-bold text-gray-900">$29</span>
+                        <span class="text-4xl font-bold text-gray-900">£29</span>
                         <span class="text-gray-600">/month</span>
-                        <p class="text-sm text-beam-600 font-medium mt-1">or $249/year (save $99)</p>
+                        <p class="text-sm text-beam-600 font-medium mt-1">or £249/year (save £99)</p>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center gap-3 text-gray-700">
