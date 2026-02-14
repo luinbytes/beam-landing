@@ -107,9 +107,10 @@
                 </p>
                 
                 <!-- Email Capture -->
-                <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8">
+                <form action="https://formspree.io/f/xeelgggn" method="POST" id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8">
                     <input 
                         type="email" 
+                        name="email"
                         placeholder="Enter your email" 
                         required
                         class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none transition"
@@ -622,9 +623,10 @@
                 Join 500+ contractors who've already switched to Beam. Free to start, no credit card required.
             </p>
             
-            <form id="cta-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+            <form action="https://formspree.io/f/xeelgggn" method="POST" id="cta-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
                 <input 
                     type="email" 
+                    name="email"
                     placeholder="Enter your email" 
                     required
                     class="flex-1 px-4 py-3 border-0 rounded-lg focus:ring-2 focus:ring-white focus:outline-none transition text-gray-900"
@@ -691,27 +693,41 @@
 
     <!-- Form Handler Script -->
     <script>
-        // Simple form handling - replace with actual backend integration
-        document.querySelectorAll('form').forEach(form => {
+        // Handle form submission via AJAX to Formspree
+        document.querySelectorAll('form[action^="https://formspree"]').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const email = this.querySelector('input[type="email"]').value;
-                
-                // TODO: Replace with actual API call
-                console.log('Email captured:', email);
-                
-                // Show success message
                 const button = this.querySelector('button');
                 const originalText = button.textContent;
-                button.textContent = 'Got it! Check your email 🎉';
+
+                // Disable button while submitting
+                button.textContent = 'Submitting...';
                 button.disabled = true;
-                
-                // Reset after 3 seconds
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                    this.reset();
-                }, 3000);
+
+                // Submit to Formspree
+                fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        button.textContent = 'Got it! We\'ll be in touch 🎉';
+                        this.reset();
+                    } else {
+                        button.textContent = 'Oops! Try again';
+                    }
+                })
+                .catch(error => {
+                    button.textContent = 'Oops! Try again';
+                })
+                .finally(() => {
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 3000);
+                });
             });
         });
 
