@@ -229,9 +229,13 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800">
             <div class="px-4 py-4 space-y-3">
-                <a href="#features" class="block text-gray-600 hover:text-gray-900">Features</a>
-                <a href="#pricing" class="block text-gray-600 hover:text-gray-900">Pricing</a>
-                <a href="#faq" class="block text-gray-600 hover:text-gray-900">FAQ</a>
+                <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-600">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Dark Mode</span>
+                    <button id="dark-mode-toggle-mobile" class="dark-mode-toggle" aria-label="Toggle dark mode"></button>
+                </div>
+                <a href="#features" class="block text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Features</a>
+                <a href="#pricing" class="block text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Pricing</a>
+                <a href="#faq" class="block text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">FAQ</a>
                 <a href="#cta" class="block bg-beam-500 text-white px-4 py-2 rounded-lg font-medium text-center">Get Started Free</a>
             </div>
         </div>
@@ -377,15 +381,15 @@
                                     </div>
                                     <div class="border-t pt-3 space-y-2">
                                         <div class="flex justify-between text-xs">
-                                            <span class="text-gray-600">Bathroom leak repair</span>
+                                            <span class="text-gray-600 dark:text-gray-300">Bathroom leak repair</span>
                                             <span class="font-medium">£85.00</span>
                                         </div>
                                         <div class="flex justify-between text-xs">
-                                            <span class="text-gray-600">Pipe replacement (2m)</span>
+                                            <span class="text-gray-600 dark:text-gray-300">Pipe replacement (2m)</span>
                                             <span class="font-medium">£34.00</span>
                                         </div>
                                         <div class="flex justify-between text-xs">
-                                            <span class="text-gray-600">Callout fee</span>
+                                            <span class="text-gray-600 dark:text-gray-300">Callout fee</span>
                                             <span class="font-medium">£45.00</span>
                                         </div>
                                         <div class="flex justify-between text-xs pt-2 border-t font-semibold total-update">
@@ -479,7 +483,7 @@
                         <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Pick a template</h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Choose from our library of professional templates for plumbing, electrical, HVAC, general contracting, and more. Or create your own.
                     </p>
                 </div>
@@ -491,7 +495,7 @@
                         <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Add your line items</h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Quick-add materials and labor from your saved items. Prices auto-calculate. Add notes, photos, or terms with one tap.
                     </p>
                 </div>
@@ -503,7 +507,7 @@
                         <div class="absolute -top-2 -right-2 w-8 h-8 bg-beam-500 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Send via SMS</h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Text the PDF directly to your customer. They click, review, and approve. You get notified instantly. Done.
                     </p>
                 </div>
@@ -527,7 +531,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     Everything you need to quote faster
                 </h2>
-                <p class="text-lg text-gray-600">
+                <p class="text-lg text-gray-600 dark:text-gray-300">
                     Simple tools that just work. No bloat, no complexity.
                 </p>
             </div>
@@ -623,7 +627,7 @@
                     </div>
                     <div class="mb-6">
                         <span class="text-4xl font-bold text-gray-900">£0</span>
-                        <span class="text-gray-600">/month</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center gap-3 text-gray-700">
@@ -667,7 +671,7 @@
                     </div>
                     <div class="mb-6">
                         <span class="text-4xl font-bold text-gray-900">£29</span>
-                        <span class="text-gray-600">/month</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
                         <p class="text-sm text-beam-600 font-medium mt-1">or £249/year (save £99)</p>
                     </div>
                     <ul class="space-y-3 mb-8">
@@ -871,7 +875,7 @@
             </div>
             
             <div class="mt-8 text-center">
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-300">
                     More questions? Email us at <a href="mailto:support@beamhq.com" class="text-beam-600 hover:text-beam-700 font-medium">support@beamhq.com</a>
                 </p>
             </div>
@@ -961,6 +965,7 @@
         // Dark mode initialization
         const html = document.documentElement;
         const toggle = document.getElementById('dark-mode-toggle');
+        const toggleMobile = document.getElementById('dark-mode-toggle-mobile');
         
         // Check for saved preference or system preference
         const savedTheme = localStorage.getItem('beam-theme');
@@ -970,9 +975,18 @@
             html.classList.add('dark');
         }
         
-        // Toggle handler
+        // Toggle handler for desktop
         if (toggle) {
             toggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('beam-theme', isDark ? 'dark' : 'light');
+            });
+        }
+        
+        // Toggle handler for mobile
+        if (toggleMobile) {
+            toggleMobile.addEventListener('click', () => {
                 html.classList.toggle('dark');
                 const isDark = html.classList.contains('dark');
                 localStorage.setItem('beam-theme', isDark ? 'dark' : 'light');
@@ -1164,7 +1178,7 @@
                     const itemEl = document.createElement('div');
                     itemEl.className = 'flex justify-between text-xs line-item-row';
                     itemEl.innerHTML = `
-                        <span class="text-gray-600">${item.name}</span>
+                        <span class="text-gray-600 dark:text-gray-300">${item.name}</span>
                         <span class="font-medium">£${item.price.toFixed(2)}</span>
                     `;
                     container.appendChild(itemEl);
