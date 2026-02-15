@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -35,6 +36,48 @@
         }
     </script>
     <style>
+        /* Dark mode styles */
+        .dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+        }
+        
+        /* Dark mode toggle button */
+        .dark-mode-toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background-color: #d1d5db;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark .dark-mode-toggle {
+            background-color: #f97316;
+        }
+        
+        .dark-mode-toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark .dark-mode-toggle::before {
+            transform: translateX(20px);
+        }
+        
         .gradient-text {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             -webkit-background-clip: text;
@@ -145,10 +188,10 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-900 bg-white">
+<body class="font-sans antialiased text-gray-900 bg-white dark:bg-slate-900 dark:text-slate-100">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-2">
@@ -157,12 +200,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <span class="text-xl font-bold text-gray-900">Beam</span>
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">Beam</span>
                 </div>
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#features" class="text-gray-600 hover:text-gray-900 transition">Features</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-gray-900 transition">Pricing</a>
-                    <a href="#faq" class="text-gray-600 hover:text-gray-900 transition">FAQ</a>
+                <div class="hidden md:flex items-center gap-6">
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+                    <a href="#features" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition">Features</a>
+                    <a href="#pricing" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition">Pricing</a>
+                    <a href="#faq" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition">FAQ</a>
                     <a href="#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition">Get Started Free</a>
                 </div>
                 <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -193,11 +237,11 @@
                         <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
                         Trusted by 500+ contractors
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
                     Professional quotes in<br>
                     <span class="gradient-text">seconds, not hours</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
                     Stop losing jobs to slow quotes. Create professional PDFs, send via SMS, and get approved faster. Built for plumbers, electricians, and contractors who want to win more work.
                 </p>
                 
@@ -357,47 +401,47 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="py-16 md:py-24 bg-gray-50">
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
                     Sound familiar?
                 </h2>
                 <div class="space-y-4">
-                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">📝</span>
                         </div>
                         <div class="text-left">
                             <p class="font-semibold text-gray-900">Still creating quotes in Word or Excel?</p>
-                            <p class="text-gray-600 text-sm mt-1">Templates break, formatting is a pain, and it never looks professional.</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">Templates break, formatting is a pain, and it never looks professional.</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">⏰</span>
                         </div>
                         <div class="text-left">
                             <p class="font-semibold text-gray-900">Spending 30+ minutes on each quote?</p>
-                            <p class="text-gray-600 text-sm mt-1">That's hours every week you could spend on actual billable work.</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">That's hours every week you could spend on actual billable work.</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">💸</span>
                         </div>
                         <div class="text-left">
                             <p class="font-semibold text-gray-900">Losing jobs to faster competitors?</p>
-                            <p class="text-gray-600 text-sm mt-1">The first quote often wins. Speed matters more than you think.</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">The first quote often wins. Speed matters more than you think.</p>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl p-5 card-shadow flex items-start gap-4">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">📱</span>
                         </div>
                         <div class="text-left">
                             <p class="font-semibold text-gray-900">Clients asking for quotes by text?</p>
-                            <p class="text-gray-600 text-sm mt-1">But you're stuck at a job site with no way to send something professional.</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">But you're stuck at a job site with no way to send something professional.</p>
                         </div>
                     </div>
                 </div>
@@ -480,67 +524,67 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📄</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Professional PDFs</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Clean, branded quotes that look like you spent hours on them. Your logo, your colors, your business info.
                     </p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">💬</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">SMS Delivery</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Send quotes straight to your customer's phone. 98% open rate. Instant delivery. No email lag.
                     </p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📚</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Template Library</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Start with proven templates for your trade. Customize once, reuse forever. Save hours every week.
                     </p>
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">🔢</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Simple Line Items</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Add materials, labor, and misc costs with a tap. Auto-calculating totals, taxes, and margins. No math required.
                     </p>
                 </div>
                 
                 <!-- Feature 5 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📱</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Mobile-First</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Works great on your phone. Create and send quotes from the job site, your truck, or anywhere.
                     </p>
                 </div>
                 
                 <!-- Feature 6 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">✅</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Approval Tracking</h3>
-                    <p class="text-gray-600 text-sm">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">
                         Know when customers view and approve your quotes. Follow up at the right time. Close more deals.
                     </p>
                 </div>
@@ -565,7 +609,7 @@
                 <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200">
                     <div class="mb-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-1">Free</h3>
-                        <p class="text-gray-600 text-sm">Perfect for getting started</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">Perfect for getting started</p>
                     </div>
                     <div class="mb-6">
                         <span class="text-4xl font-bold text-gray-900">£0</span>
@@ -609,7 +653,7 @@
                     </div>
                     <div class="mb-6">
                         <h3 class="text-xl font-bold text-gray-900 mb-1">Pro</h3>
-                        <p class="text-gray-600 text-sm">For serious contractors</p>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">For serious contractors</p>
                     </div>
                     <div class="mb-6">
                         <span class="text-4xl font-bold text-gray-900">£29</span>
@@ -680,7 +724,7 @@
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="flex items-center gap-1 mb-4">
                         <span class="text-yellow-400">★</span>
                         <span class="text-yellow-400">★</span>
@@ -701,7 +745,7 @@
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="flex items-center gap-1 mb-4">
                         <span class="text-yellow-400">★</span>
                         <span class="text-yellow-400">★</span>
@@ -722,7 +766,7 @@
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-white rounded-xl p-6 card-shadow">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="flex items-center gap-1 mb-4">
                         <span class="text-yellow-400">★</span>
                         <span class="text-yellow-400">★</span>
@@ -901,6 +945,41 @@
             </div>
         </div>
     </footer>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        // Dark mode initialization
+        const html = document.documentElement;
+        const toggle = document.getElementById('dark-mode-toggle');
+        
+        // Check for saved preference or system preference
+        const savedTheme = localStorage.getItem('beam-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.classList.add('dark');
+        }
+        
+        // Toggle handler
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('beam-theme', isDark ? 'dark' : 'light');
+            });
+        }
+        
+        // Listen for system preference changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('beam-theme')) {
+                if (e.matches) {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+            }
+        });
+    </script>
 
     <!-- Form Handler Script -->
     <script>
