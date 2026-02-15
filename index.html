@@ -50,6 +50,99 @@
         .card-shadow-lg {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        
+        /* Interactive Preview Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse-green {
+            0%, 100% { background-color: #dcfce7; }
+            50% { background-color: #bbf7d0; }
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .animate-count-up {
+            animation: countUp 0.3s ease-out;
+        }
+        
+        .animate-pulse-green {
+            animation: pulse-green 0.6s ease-in-out;
+        }
+        
+        .animate-checkmark {
+            animation: checkmark 0.4s ease-out;
+        }
+        
+        .preview-step {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-step.visible {
+            opacity: 1;
+        }
+        
+        .line-item-row {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        
+        .line-item-row.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease-out;
+        }
+        
+        .total-update {
+            transition: all 0.3s ease-out;
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 14px;
+            background-color: #f97316;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .phone-frame-interactive {
+            transition: transform 0.3s ease;
+        }
+        
+        .phone-frame-interactive:hover {
+            transform: translateY(-4px);
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white">
@@ -145,11 +238,11 @@
                 </div>
             </div>
 
-            <!-- Right: Phone Mockup -->
+            <!-- Right: Interactive Phone Mockup -->
             <div class="hidden md:block">
                 <div class="relative mx-auto" style="max-width: 320px;">
                     <!-- Phone frame -->
-                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive">
                         <div class="bg-white rounded-[2.5rem] overflow-hidden">
                             <!-- Status bar -->
                             <div class="bg-gray-100 px-6 py-2 flex justify-between items-center text-xs text-gray-600">
@@ -160,38 +253,96 @@
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a.75.75 0 01.75.75v.258a33.186 33.186 0 016.668.83.75.75 0 01-.336 1.461 31.28 31.28 0 00-1.103-.232l1.702 7.545a.75.75 0 01-.387.832A4.981 4.981 0 0115 14c-.825 0-1.606-.2-2.294-.556a.75.75 0 01-.387-.832l1.77-7.849a31.743 31.743 0 00-3.339-.254v11.505l6.5.001a.75.75 0 010 1.5h-14a.75.75 0 010-1.5l6.5-.001V4.509c-1.14.025-2.256.096-3.34.254l1.771 7.85a.75.75 0 01-.387.83A4.98 4.98 0 015 14a4.98 4.98 0 01-2.294-.556.75.75 0 01-.387-.832L4.02 5.067c-.374.06-.743.125-1.103.232a.75.75 0 01-.336-1.462 33.053 33.053 0 016.668-.829V2.75A.75.75 0 0110 2z"/></svg>
                                 </div>
                             </div>
-                            <!-- Quote preview -->
-                            <div class="p-4 space-y-3">
-                                <div class="text-center border-b pb-3">
-                                    <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
-                                    <div class="font-bold text-gray-900 text-sm">Quote #Q-2024-1847</div>
-                                    <div class="text-xs text-gray-500">Mike Richardson Plumbing</div>
+                            
+                            <!-- Interactive Quote Preview -->
+                            <div id="quote-preview" class="p-4 space-y-3 min-h-[400px]">
+                                <!-- Step indicator -->
+                                <div id="step-indicator" class="text-xs text-beam-600 font-semibold text-center mb-3 opacity-0">
+                                    Step <span id="current-step">1</span> of 4
                                 </div>
-                                <div class="text-xs text-gray-600">
-                                    <div class="font-medium text-gray-900 mb-1">Bill To:</div>
-                                    <div class="text-gray-500">Mrs. Johnson<br>42 Oak Street, Manchester</div>
-                                </div>
-                                <div class="border-t pt-3 space-y-2">
-                                    <div class="flex justify-between text-xs">
-                                        <span class="text-gray-600">Bathroom leak repair</span>
-                                        <span class="font-medium">£85.00</span>
+                                
+                                <!-- Step 1: Empty form -->
+                                <div id="step1" class="preview-step visible">
+                                    <div class="text-center border-b pb-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
+                                        <div class="font-bold text-gray-900 text-sm">New Quote</div>
+                                        <div class="text-xs text-gray-400">Click "See how it works" to start</div>
                                     </div>
-                                    <div class="flex justify-between text-xs">
-                                        <span class="text-gray-600">Pipe replacement (2m)</span>
-                                        <span class="font-medium">£34.00</span>
-                                    </div>
-                                    <div class="flex justify-between text-xs">
-                                        <span class="text-gray-600">Callout fee</span>
-                                        <span class="font-medium">£45.00</span>
-                                    </div>
-                                    <div class="flex justify-between text-xs pt-2 border-t font-semibold">
-                                        <span>Total</span>
-                                        <span class="text-beam-600">£164.00</span>
+                                    <div class="pt-4 text-center">
+                                        <button id="start-demo" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                                            See how it works →
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="pt-2">
-                                    <div class="bg-green-50 text-green-700 text-xs text-center py-2 rounded-lg font-medium">
-                                        ✓ Sent via SMS • Viewed by customer
+                                
+                                <!-- Step 2: Customer info -->
+                                <div id="step2" class="preview-step hidden">
+                                    <div class="text-center border-b pb-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
+                                        <div class="font-bold text-gray-900 text-sm">Quote #Q-2024-1847</div>
+                                        <div class="text-xs text-gray-500">Mike Richardson Plumbing</div>
+                                    </div>
+                                    <div class="text-xs text-gray-600 pt-3">
+                                        <div class="font-medium text-gray-900 mb-1 flex items-center gap-2">
+                                            <span class="w-5 h-5 bg-beam-100 rounded flex items-center justify-center text-beam-600 text-xs font-bold">1</span>
+                                            Customer Details
+                                        </div>
+                                        <div id="customer-name" class="text-gray-500 h-4"></div>
+                                        <div id="customer-address" class="text-gray-400 h-3 text-xs"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 3: Adding line items -->
+                                <div id="step3" class="preview-step hidden">
+                                    <div class="text-center border-b pb-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
+                                        <div class="font-bold text-gray-900 text-sm">Quote #Q-2024-1847</div>
+                                        <div class="text-xs text-gray-500">Mike Richardson Plumbing</div>
+                                    </div>
+                                    <div class="text-xs text-gray-600 pt-3">
+                                        <div class="font-medium text-gray-900 mb-1 flex items-center gap-2">
+                                            <span class="w-5 h-5 bg-beam-100 rounded flex items-center justify-center text-beam-600 text-xs font-bold">2</span>
+                                            Line Items
+                                        </div>
+                                    </div>
+                                    <div class="border-t pt-3 space-y-2" id="line-items-container">
+                                        <!-- Line items will be added dynamically -->
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 4: Final quote with total -->
+                                <div id="step4" class="preview-step hidden">
+                                    <div class="text-center border-b pb-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg mx-auto mb-2"></div>
+                                        <div class="font-bold text-gray-900 text-sm">Quote #Q-2024-1847</div>
+                                        <div class="text-xs text-gray-500">Mike Richardson Plumbing</div>
+                                    </div>
+                                    <div class="text-xs text-gray-600 pt-2">
+                                        <div class="font-medium text-gray-900 mb-1">Bill To:</div>
+                                        <div class="text-gray-500">Mrs. Johnson<br>42 Oak Street, Manchester</div>
+                                    </div>
+                                    <div class="border-t pt-3 space-y-2">
+                                        <div class="flex justify-between text-xs">
+                                            <span class="text-gray-600">Bathroom leak repair</span>
+                                            <span class="font-medium">£85.00</span>
+                                        </div>
+                                        <div class="flex justify-between text-xs">
+                                            <span class="text-gray-600">Pipe replacement (2m)</span>
+                                            <span class="font-medium">£34.00</span>
+                                        </div>
+                                        <div class="flex justify-between text-xs">
+                                            <span class="text-gray-600">Callout fee</span>
+                                            <span class="font-medium">£45.00</span>
+                                        </div>
+                                        <div class="flex justify-between text-xs pt-2 border-t font-semibold total-update">
+                                            <span>Total</span>
+                                            <span id="final-total" class="text-beam-600">£0.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="pt-2">
+                                        <div id="pdf-badge" class="hidden bg-green-50 text-green-700 text-xs text-center py-2 rounded-lg font-medium">
+                                            ✓ Sent via SMS • Viewed by customer
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -800,6 +951,227 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+        
+        // Interactive Quote Preview Animation
+        class QuotePreviewDemo {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 4;
+                this.isAnimating = false;
+                this.lineItems = [
+                    { name: 'Bathroom leak repair', price: 85.00 },
+                    { name: 'Pipe replacement (2m)', price: 34.00 },
+                    { name: 'Callout fee', price: 45.00 }
+                ];
+                this.currentTotal = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                const startButton = document.getElementById('start-demo');
+                if (startButton) {
+                    startButton.addEventListener('click', () => {
+                        if (!this.isAnimating) {
+                            this.startDemo();
+                        }
+                    });
+                }
+                
+                // Auto-start on desktop after 2 seconds
+                if (window.innerWidth >= 768) {
+                    setTimeout(() => {
+                        if (!this.isAnimating && this.currentStep === 1) {
+                            // Don't auto-start, let user click
+                        }
+                    }, 2000);
+                }
+            }
+            
+            async startDemo() {
+                this.isAnimating = true;
+                this.showStepIndicator();
+                
+                // Step 2: Add customer info
+                await this.delay(500);
+                this.goToStep(2);
+                await this.typeCustomerInfo();
+                await this.delay(800);
+                
+                // Step 3: Add line items one by one
+                this.goToStep(3);
+                await this.delay(500);
+                await this.addLineItems();
+                await this.delay(600);
+                
+                // Step 4: Show final quote with total
+                this.goToStep(4);
+                await this.animateTotal();
+                await this.delay(400);
+                await this.showPDFBadge();
+                
+                // Reset after 5 seconds
+                await this.delay(5000);
+                this.resetDemo();
+            }
+            
+            showStepIndicator() {
+                const indicator = document.getElementById('step-indicator');
+                if (indicator) {
+                    indicator.style.opacity = '1';
+                    indicator.classList.add('animate-fade-in');
+                }
+            }
+            
+            updateStepIndicator(step) {
+                const stepNum = document.getElementById('current-step');
+                if (stepNum) {
+                    stepNum.textContent = step;
+                }
+            }
+            
+            goToStep(step) {
+                // Hide all steps
+                for (let i = 1; i <= this.totalSteps; i++) {
+                    const stepEl = document.getElementById(`step${i}`);
+                    if (stepEl) {
+                        stepEl.classList.add('hidden');
+                        stepEl.classList.remove('visible');
+                    }
+                }
+                
+                // Show current step
+                const currentStepEl = document.getElementById(`step${step}`);
+                if (currentStepEl) {
+                    currentStepEl.classList.remove('hidden');
+                    currentStepEl.classList.add('visible', 'animate-fade-in');
+                }
+                
+                this.updateStepIndicator(step);
+                this.currentStep = step;
+            }
+            
+            async typeCustomerInfo() {
+                const nameEl = document.getElementById('customer-name');
+                const addressEl = document.getElementById('customer-address');
+                
+                if (nameEl && addressEl) {
+                    await this.typeText(nameEl, 'Mrs. Johnson', 40);
+                    await this.delay(300);
+                    await this.typeText(addressEl, '42 Oak Street, Manchester', 30);
+                }
+            }
+            
+            async addLineItems() {
+                const container = document.getElementById('line-items-container');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                for (let i = 0; i < this.lineItems.length; i++) {
+                    await this.delay(700);
+                    const item = this.lineItems[i];
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex justify-between text-xs line-item-row';
+                    itemEl.innerHTML = `
+                        <span class="text-gray-600">${item.name}</span>
+                        <span class="font-medium">£${item.price.toFixed(2)}</span>
+                    `;
+                    container.appendChild(itemEl);
+                    
+                    // Trigger animation
+                    await this.delay(50);
+                    itemEl.classList.add('visible');
+                }
+            }
+            
+            async animateTotal() {
+                const totalEl = document.getElementById('final-total');
+                if (!totalEl) return;
+                
+                const targetTotal = 164.00;
+                const steps = 20;
+                const increment = targetTotal / steps;
+                
+                for (let i = 0; i <= steps; i++) {
+                    const current = increment * i;
+                    totalEl.textContent = `£${current.toFixed(2)}`;
+                    totalEl.classList.add('animate-count-up');
+                    await this.delay(40);
+                }
+                
+                // Final value
+                totalEl.textContent = `£${targetTotal.toFixed(2)}`;
+            }
+            
+            async showPDFBadge() {
+                const badge = document.getElementById('pdf-badge');
+                if (badge) {
+                    badge.classList.remove('hidden');
+                    badge.classList.add('animate-checkmark', 'animate-pulse-green');
+                }
+            }
+            
+            resetDemo() {
+                this.currentStep = 1;
+                this.isAnimating = false;
+                this.currentTotal = 0;
+                
+                // Reset step indicator
+                const indicator = document.getElementById('step-indicator');
+                if (indicator) {
+                    indicator.style.opacity = '0';
+                }
+                
+                // Go back to step 1
+                this.goToStep(1);
+                
+                // Clear dynamic content
+                const container = document.getElementById('line-items-container');
+                if (container) {
+                    container.innerHTML = '';
+                }
+                
+                const nameEl = document.getElementById('customer-name');
+                const addressEl = document.getElementById('customer-address');
+                if (nameEl) nameEl.textContent = '';
+                if (addressEl) addressEl.textContent = '';
+                
+                const totalEl = document.getElementById('final-total');
+                if (totalEl) totalEl.textContent = '£0.00';
+                
+                const badge = document.getElementById('pdf-badge');
+                if (badge) {
+                    badge.classList.add('hidden');
+                    badge.classList.remove('animate-checkmark', 'animate-pulse-green');
+                }
+                
+                // Remove animation classes
+                for (let i = 1; i <= this.totalSteps; i++) {
+                    const stepEl = document.getElementById(`step${i}`);
+                    if (stepEl) {
+                        stepEl.classList.remove('animate-fade-in');
+                    }
+                }
+            }
+            
+            async typeText(element, text, speed = 50) {
+                element.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    element.textContent += text[i];
+                    await this.delay(speed);
+                }
+            }
+            
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+        
+        // Initialize demo when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new QuotePreviewDemo();
         });
     </script>
 </body>
