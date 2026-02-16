@@ -197,6 +197,107 @@
             transform: translateY(-4px);
         }
         
+        /* ===================================
+           HERO PHONE MOCKUP ANIMATIONS
+           =================================== */
+        
+        /* Float animation - gentle up/down movement */
+        @keyframes phone-float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(var(--scroll-rotation, 0deg));
+            }
+            50% { 
+                transform: translateY(-15px) rotate(var(--scroll-rotation, 0deg));
+            }
+        }
+        
+        /* Glow pulse effect */
+        @keyframes phone-glow-pulse {
+            0%, 100% {
+                box-shadow: 
+                    0 25px 50px -12px rgba(249, 115, 22, 0.25),
+                    0 0 30px rgba(249, 115, 22, 0.15),
+                    0 0 60px rgba(249, 115, 22, 0.1);
+            }
+            50% {
+                box-shadow: 
+                    0 25px 50px -12px rgba(249, 115, 22, 0.35),
+                    0 0 40px rgba(249, 115, 22, 0.25),
+                    0 0 80px rgba(249, 115, 22, 0.15);
+            }
+        }
+        
+        /* Subtle rotation on scroll */
+        @keyframes phone-rotate-subtle {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(2deg);
+            }
+            75% {
+                transform: rotate(-2deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        
+        /* Phone mockup container with animations */
+        .phone-mockup-animated {
+            animation: 
+                phone-float 6s ease-in-out infinite,
+                phone-glow-pulse 4s ease-in-out infinite;
+            animation-delay: 0.5s, 0s;
+        }
+        
+        /* Fade in animation for initial load */
+        .phone-mockup-fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: phone-fade-in 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes phone-fade-in {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* Scroll-based rotation (controlled by JS via CSS variable) */
+        .phone-mockup-scroll-rotate {
+            --scroll-rotation: 0deg;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .phone-mockup-animated {
+                animation: phone-float 6s ease-in-out infinite;
+                /* Reduce glow on mobile for performance */
+            }
+            
+            @keyframes phone-float {
+                0%, 100% { 
+                    transform: translateY(0px);
+                }
+                50% { 
+                    transform: translateY(-10px);
+                }
+            }
+        }
+        
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .phone-mockup-animated,
+            .phone-mockup-fade-in {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
         /* Scroll Reveal Animations */
         .scroll-reveal {
             opacity: 0;
@@ -218,10 +319,12 @@
         
         .scroll-reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s; }
         .scroll-reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.1s; }
-        .scroll-reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.2s; }
-        .scroll-reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s; }
-        .scroll-reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.4s; }
-        .scroll-reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.5s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.15s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.2s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.25s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.3s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(7) { transition-delay: 0.35s; }
+        .scroll-reveal-stagger.revealed > *:nth-child(8) { transition-delay: 0.4s; }
         
         .scroll-reveal-stagger.revealed > * {
             opacity: 1;
@@ -459,7 +562,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- Left: Copy -->
-                <div class="max-w-xl scroll-reveal-stagger">
+                <div class="max-w-xl scroll-reveal-stagger revealed">
                     <div class="inline-flex items-center gap-2 bg-beam-100 text-beam-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
                         <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
                         Trusted by 500+ contractors
@@ -510,10 +613,10 @@
             </div>
 
             <!-- Right: Interactive Phone Mockup -->
-            <div class="hidden md:block">
-                <div class="relative mx-auto" style="max-width: 320px;">
-                    <!-- Phone frame -->
-                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive">
+            <div class="hidden md:block scroll-reveal revealed">
+                <div class="relative mx-auto phone-mockup-fade-in" style="max-width: 320px;">
+                    <!-- Phone frame with animations -->
+                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive phone-mockup-animated phone-mockup-scroll-rotate" role="img" aria-label="Beam app preview on mobile phone">
                         <div class="bg-white dark:bg-slate-700 rounded-[2.5rem] overflow-hidden">
                             <!-- Status bar -->
                             <div class="bg-gray-100 dark:bg-slate-600 px-6 py-2 flex justify-between items-center text-xs text-gray-600">
@@ -1033,7 +1136,7 @@
                 </h2>
             </div>
             
-            <div class="space-y-4">
+            <div class="space-y-4 scroll-reveal-stagger">
                 <!-- FAQ 1 -->
                 <details class="bg-gray-50 dark:bg-slate-800 rounded-xl group" open>
                     <summary class="flex items-center justify-between p-5 cursor-pointer list-none">
@@ -1127,7 +1230,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-4 gap-8 scroll-reveal-stagger">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
                         <div class="w-8 h-8 bg-gradient-to-br from-beam-500 to-beam-600 rounded-lg flex items-center justify-center">
@@ -1526,6 +1629,62 @@
         // Initialize scroll reveal when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new ScrollReveal();
+        });
+    </script>
+    
+    <!-- Phone Mockup Scroll Rotation Script -->
+    <script>
+        class PhoneMockupScroll {
+            constructor() {
+                this.phoneElement = document.querySelector('.phone-mockup-scroll-rotate');
+                this.lastScrollY = 0;
+                this.ticking = false;
+                this.init();
+            }
+            
+            init() {
+                if (!this.phoneElement) return;
+                
+                // Check for reduced motion preference
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) return;
+                
+                // Add scroll listener
+                window.addEventListener('scroll', () => {
+                    this.lastScrollY = window.scrollY;
+                    this.requestTick();
+                }, { passive: true });
+            }
+            
+            requestTick() {
+                if (!this.ticking) {
+                    requestAnimationFrame(() => {
+                        this.updateRotation();
+                        this.ticking = false;
+                    });
+                    this.ticking = true;
+                }
+            }
+            
+            updateRotation() {
+                // Calculate rotation based on scroll position
+                // Max rotation: 3 degrees
+                // Scroll range: 0 to 500px
+                const maxRotation = 3;
+                const scrollRange = 500;
+                const scrollProgress = Math.min(this.lastScrollY / scrollRange, 1);
+                
+                // Create subtle oscillating rotation effect
+                const rotation = Math.sin(scrollProgress * Math.PI) * maxRotation;
+                
+                // Apply rotation via CSS custom property (doesn't override animation transform)
+                this.phoneElement.style.setProperty('--scroll-rotation', `${rotation}deg`);
+            }
+        }
+        
+        // Initialize phone mockup scroll rotation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PhoneMockupScroll();
         });
     </script>
 </body>
