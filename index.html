@@ -988,85 +988,167 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Testimonials Carousel Section -->
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800" aria-label="Customer testimonials">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                     Contractors love Beam
                 </h2>
-                <p class="text-lg text-gray-600">
+                <p class="text-lg text-gray-600 dark:text-gray-400">
                     Join 500+ tradespeople already saving hours every week
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-6 scroll-reveal-stagger">
-                <!-- Testimonial 1 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
+            <!-- Carousel Container -->
+            <div class="testimonials-carousel relative scroll-reveal" role="region" aria-live="polite" aria-label="Testimonials carousel">
+                <!-- Testimonials Slides -->
+                <div class="testimonials-slides-container relative overflow-hidden min-h-[280px]">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out" data-index="0">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "I used to spend 45 minutes on each quote. Now it takes me 2 minutes. I've closed 3 more jobs this month just by being first to respond."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold">MR</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Mike Richardson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Plumber, Manchester</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-gray-700 mb-4">
-                        "I used to spend 45 minutes on each quote. Now it takes me 2 minutes. I've closed 3 more jobs this month just by being first to respond."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">MR</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Mike Richardson</p>
-                            <p class="text-gray-500 text-sm">Plumber, Manchester</p>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="1">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "My customers are impressed. They think I have this whole professional operation. Really it's just me and Beam on my phone."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-semibold">ST</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Sarah Thompson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Electrician, Birmingham</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="2">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "The SMS feature alone is worth it. I send a quote while walking to my truck and by the time I'm driving, I've got an approval."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">DL</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Dave Lewis</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Handyman, Leeds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="3">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "Finally got rid of my old spreadsheet system. Beam's templates are exactly what I needed. Professional and simple to use."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-semibold">JW</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">James Wilson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Carpenter, Bristol</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="4">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "I was skeptical at first, but Beam pays for itself. The time I save on paperwork means more time with my family. Can't put a price on that."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white font-semibold">EH</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Emma Hughes</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Painter, Liverpool</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-center gap-3 mt-8">
+                    <!-- Previous Button -->
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Previous testimonial" data-action="prev">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dot Indicators -->
+                    <div class="flex items-center gap-2" role="tablist" aria-label="Testimonial slides">
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-beam-500 transition-all duration-300" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="3" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="4" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
                     </div>
-                    <p class="text-gray-700 mb-4">
-                        "My customers are impressed. They think I have this whole professional operation. Really it's just me and Beam on my phone."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">ST</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Sarah Thompson</p>
-                            <p class="text-gray-500 text-sm">Electrician, Birmingham</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        "The SMS feature alone is worth it. I send a quote while walking to my truck and by the time I'm driving, I've got an approval."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">DL</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Dave Lewis</p>
-                            <p class="text-gray-500 text-sm">Handyman, Leeds</p>
-                        </div>
-                    </div>
+                    
+                    <!-- Next Button -->
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Next testimonial" data-action="next">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
             
             <div class="mt-12 text-center">
-                <p class="text-gray-500 text-sm">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
                     <span class="font-semibold text-gray-900 dark:text-white">500+</span> contractors signed up in beta • 
                     <span class="font-semibold text-gray-900 dark:text-white">50,000+</span> quotes created • 
                     <span class="font-semibold text-gray-900 dark:text-white">$2M+</span> work quoted
@@ -1677,6 +1759,153 @@
         // Initialize pricing card selection when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new PricingCardSelection();
+        });
+    </script>
+
+    <!-- Testimonials Carousel Script -->
+    <script>
+        class TestimonialsCarousel {
+            constructor() {
+                this.currentIndex = 0;
+                this.totalSlides = 5;
+                this.autoRotateInterval = null;
+                this.autoRotateDelay = 5000; // 5 seconds
+                this.isPaused = false;
+                
+                this.slides = document.querySelectorAll('.testimonial-slide');
+                this.dots = document.querySelectorAll('.testimonial-dot');
+                this.prevBtn = document.querySelector('[data-action="prev"]');
+                this.nextBtn = document.querySelector('[data-action="next"]');
+                this.carousel = document.querySelector('.testimonials-carousel');
+                
+                this.init();
+            }
+            
+            init() {
+                // Auto-rotation
+                this.startAutoRotate();
+                
+                // Pause on hover
+                if (this.carousel) {
+                    this.carousel.addEventListener('mouseenter', () => this.pauseAutoRotate());
+                    this.carousel.addEventListener('mouseleave', () => this.resumeAutoRotate());
+                    // Also pause on focus for accessibility
+                    this.carousel.addEventListener('focusin', () => this.pauseAutoRotate());
+                    this.carousel.addEventListener('focusout', () => this.resumeAutoRotate());
+                }
+                
+                // Navigation buttons
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.previousSlide());
+                }
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+                
+                // Dot indicators
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+                
+                // Set initial state
+                this.updateSlides();
+            }
+            
+            startAutoRotate() {
+                this.stopAutoRotate();
+                this.autoRotateInterval = setInterval(() => {
+                    if (!this.isPaused) {
+                        this.nextSlide();
+                    }
+                }, this.autoRotateDelay);
+            }
+            
+            stopAutoRotate() {
+                if (this.autoRotateInterval) {
+                    clearInterval(this.autoRotateInterval);
+                    this.autoRotateInterval = null;
+                }
+            }
+            
+            pauseAutoRotate() {
+                this.isPaused = true;
+            }
+            
+            resumeAutoRotate() {
+                this.isPaused = false;
+            }
+            
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+                this.updateSlides();
+            }
+            
+            previousSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                this.updateSlides();
+            }
+            
+            goToSlide(index) {
+                if (index >= 0 && index < this.totalSlides) {
+                    this.currentIndex = index;
+                    this.updateSlides();
+                    // Reset auto-rotate timer when manually navigating
+                    this.startAutoRotate();
+                }
+            }
+            
+            updateSlides() {
+                // Update slides visibility with fade effect
+                this.slides.forEach((slide, index) => {
+                    if (index === this.currentIndex) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                        slide.setAttribute('aria-hidden', 'false');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                        slide.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Update dot indicators
+                this.dots.forEach((dot, index) => {
+                    if (index === this.currentIndex) {
+                        dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+                        dot.classList.add('bg-beam-500');
+                        dot.setAttribute('aria-selected', 'true');
+                    } else {
+                        dot.classList.remove('bg-beam-500');
+                        dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
+                        dot.setAttribute('aria-selected', 'false');
+                    }
+                });
+            }
+            
+            handleKeyboard(e) {
+                // Only handle keyboard when carousel is in focus or a child is focused
+                if (!this.carousel.contains(document.activeElement)) {
+                    return;
+                }
+                
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.previousSlide();
+                    this.startAutoRotate(); // Reset timer
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextSlide();
+                    this.startAutoRotate(); // Reset timer
+                }
+            }
+        }
+        
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TestimonialsCarousel();
         });
     </script>
 </body>
