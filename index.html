@@ -342,174 +342,212 @@
         }
         
         /* ===================================
-           HOVER MICRO-INTERACTIONS
+           PRICING CARD SELECTION ANIMATION
            =================================== */
         
-        /* Base transition for all interactive elements */
-        .hover-card,
-        .hover-pricing-card,
-        .hover-cta-btn,
-        .hover-secondary-btn {
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Base selection state styles */
+        .pricing-card {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.3s ease;
         }
         
-        /* Feature Cards - Subtle lift effect */
-        .hover-card {
-            cursor: default;
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 1.125rem; /* 18px - accounts for rounded-2xl padding */
+            background: transparent;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: -1;
         }
         
-        .hover-card:hover {
-            transform: scale(1.02) translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-                        0 10px 10px -5px rgba(0, 0, 0, 0.04),
-                        0 0 0 1px rgba(249, 115, 22, 0.1);
+        /* Selection ring effect */
+        .pricing-card.selected::before {
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.4);
         }
         
-        .dark .hover-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 
-                        0 10px 10px -5px rgba(0, 0, 0, 0.2),
-                        0 0 0 1px rgba(249, 115, 22, 0.2);
+        .dark .pricing-card.selected::before {
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.5);
         }
         
-        /* Pricing Cards - Prominent hover with glow */
-        .hover-pricing-card {
-            cursor: default;
-        }
-        
-        .hover-pricing-card:hover {
-            transform: scale(1.03) translateY(-6px);
-        }
-        
-        /* Free tier pricing card hover */
-        .hover-pricing-free:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-                        0 10px 10px -5px rgba(0, 0, 0, 0.04),
-                        0 0 20px rgba(107, 114, 128, 0.15);
-            border-color: #9ca3af;
-        }
-        
-        .dark .hover-pricing-free:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 
-                        0 10px 10px -5px rgba(0, 0, 0, 0.2),
-                        0 0 20px rgba(249, 115, 22, 0.15);
-        }
-        
-        /* Pro tier pricing card hover - glow effect */
-        .hover-pricing-pro:hover {
-            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.25), 
-                        0 15px 15px -5px rgba(0, 0, 0, 0.1),
-                        0 0 40px rgba(249, 115, 22, 0.2);
-            border-color: #ea580c;
-        }
-        
-        .dark .hover-pricing-pro:hover {
-            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.35), 
-                        0 15px 15px -5px rgba(0, 0, 0, 0.3),
-                        0 0 50px rgba(249, 115, 22, 0.25);
-            border-color: #f97316;
-        }
-        
-        /* Most Popular badge - pulse on card hover */
-        .hover-pricing-pro:hover .popular-badge {
-            animation: badge-pulse 0.6s ease-in-out;
-            box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
-        }
-        
-        @keyframes badge-pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.08); }
-        }
-        
-        /* CTA Buttons - Primary */
-        .hover-cta-btn {
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                        background-color 0.2s ease,
-                        box-shadow 0.2s ease;
-        }
-        
-        .hover-cta-btn:hover {
-            transform: scale(1.05);
-            background-color: #ea580c;
-            box-shadow: 0 10px 20px -5px rgba(234, 88, 12, 0.4);
-        }
-        
-        .hover-cta-btn:active {
-            transform: scale(0.98);
-            transition-duration: 0.1s;
-        }
-        
-        /* Secondary Buttons */
-        .hover-secondary-btn {
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                        background-color 0.2s ease;
-        }
-        
-        .hover-secondary-btn:hover {
-            transform: scale(1.03);
-        }
-        
-        .hover-secondary-btn:active {
-            transform: scale(0.98);
-            transition-duration: 0.1s;
-        }
-        
-        /* Testimonial Cards */
-        .hover-testimonial {
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .hover-testimonial:hover {
-            transform: scale(1.02) translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+        /* Selection glow effect */
+        .pricing-card.selected {
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.15),
+                        0 20px 25px -5px rgba(0, 0, 0, 0.1),
                         0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .dark .hover-testimonial:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 
+        .dark .pricing-card.selected {
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.25),
+                        0 20px 25px -5px rgba(0, 0, 0, 0.3),
                         0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
         
-        /* Problem Section Cards */
-        .hover-problem-card {
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                        border-color 0.25s ease;
+        /* Free card selection */
+        .pricing-card-free.selected {
+            border-color: #6b7280;
         }
         
-        .hover-problem-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-            border-left: 3px solid #f97316;
+        .dark .pricing-card-free.selected {
+            border-color: #9ca3af;
         }
         
-        .dark .hover-problem-card:hover {
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        /* Pro card selection */
+        .pricing-card-pro.selected {
+            border-color: #ea580c;
         }
         
-        /* Reduced motion for hover effects */
+        .dark .pricing-card-pro.selected {
+            border-color: #f97316;
+        }
+        
+        /* Selection checkmark indicator */
+        .pricing-card .selection-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        
+        .dark .pricing-card .selection-indicator {
+            border-color: #4b5563;
+        }
+        
+        .pricing-card:hover .selection-indicator {
+            opacity: 0.5;
+        }
+        
+        .pricing-card.selected .selection-indicator {
+            opacity: 1;
+            transform: scale(1);
+            background: #f97316;
+            border-color: #f97316;
+        }
+        
+        .pricing-card.selected .selection-indicator svg {
+            color: white;
+        }
+        
+        /* Selection checkmark animation */
+        @keyframes checkmark-pop {
+            0% { transform: scale(0.5) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        
+        .pricing-card.selected .selection-indicator svg {
+            animation: checkmark-pop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Most Popular badge - continuous pulse */
+        @keyframes badge-pulse-continuous {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+            }
+        }
+        
+        .popular-badge-animated {
+            animation: badge-pulse-continuous 2.5s ease-in-out infinite;
+        }
+        
+        /* Card click feedback */
+        @keyframes card-click {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+        
+        .pricing-card.clicking {
+            animation: card-click 0.15s ease-out;
+        }
+        
+        /* Selected state visual enhancement */
+        .pricing-card.selected .pricing-title {
+            color: #f97316;
+        }
+        
+        .dark .pricing-card.selected .pricing-title {
+            color: #fb923c;
+        }
+        
+        /* Selection ripple effect */
+        @keyframes selection-ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(249, 115, 22, 0);
+            }
+        }
+        
+        .pricing-card.selecting {
+            animation: selection-ripple 0.6s ease-out;
+        }
+        
+        /* Hover glow effect for pro card */
+        .pricing-card-pro:hover {
+            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.2), 
+                        0 15px 15px -5px rgba(0, 0, 0, 0.1),
+                        0 0 40px rgba(249, 115, 22, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .dark .pricing-card-pro:hover {
+            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.3), 
+                        0 15px 15px -5px rgba(0, 0, 0, 0.3),
+                        0 0 50px rgba(249, 115, 22, 0.2);
+        }
+        
+        /* Hover effect for free card */
+        .pricing-card-free:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #9ca3af;
+            transform: translateY(-4px);
+        }
+        
+        .dark .pricing-card-free:hover {
+            border-color: #6b7280;
+        }
+        
+        /* Reduced motion for selection effects */
         @media (prefers-reduced-motion: reduce) {
-            .hover-card,
-            .hover-pricing-card,
-            .hover-cta-btn,
-            .hover-secondary-btn,
-            .hover-testimonial,
-            .hover-problem-card {
+            .pricing-card,
+            .pricing-card::before,
+            .pricing-card .selection-indicator,
+            .popular-badge-animated {
                 transition: none;
             }
             
-            .hover-card:hover,
-            .hover-pricing-card:hover,
-            .hover-cta-btn:hover,
-            .hover-secondary-btn:hover,
-            .hover-testimonial:hover,
-            .hover-problem-card:hover {
-                transform: none;
+            .pricing-card.selected .selection-indicator svg,
+            .pricing-card.clicking,
+            .pricing-card.selecting,
+            .popular-badge-animated {
+                animation: none;
             }
             
-            .hover-pricing-pro:hover .popular-badge {
-                animation: none;
+            .pricing-card-pro:hover,
+            .pricing-card-free:hover {
+                transform: none;
             }
         }
     </style>
@@ -533,7 +571,7 @@
                     <a href="#features" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">Features</a>
                     <a href="#pricing" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">Pricing</a>
                     <a href="#faq" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">FAQ</a>
-                    <a href="#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition hover-cta-btn">Get Started Free</a>
+                    <a href="#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition">Get Started Free</a>
                 </div>
                 <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -584,7 +622,7 @@
                         required
                         class="flex-1 px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none transition bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                     >
-                    <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap hover-cta-btn">
+                    <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
                         Start Free →
                     </button>
                 </form>
@@ -738,7 +776,7 @@
                     Sound familiar?
                 </h2>
                 <div class="space-y-4 scroll-reveal-stagger">
-                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4 hover-problem-card">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">📝</span>
                         </div>
@@ -747,7 +785,7 @@
                             <p class="text-gray-600 dark:text-gray-200 text-sm mt-1">Templates break, formatting is a pain, and it never looks professional.</p>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4 hover-problem-card">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">⏰</span>
                         </div>
@@ -756,7 +794,7 @@
                             <p class="text-gray-600 dark:text-gray-200 text-sm mt-1">That's hours every week you could spend on actual billable work.</p>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4 hover-problem-card">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">💸</span>
                         </div>
@@ -765,7 +803,7 @@
                             <p class="text-gray-600 dark:text-gray-200 text-sm mt-1">The first quote often wins. Speed matters more than you think.</p>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4 hover-problem-card">
+                    <div class="bg-white dark:bg-slate-700 rounded-xl p-5 card-shadow flex items-start gap-4">
                         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
                             <span class="text-xl">📱</span>
                         </div>
@@ -854,7 +892,7 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-reveal-stagger">
                 <!-- Feature 1 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📄</span>
                     </div>
@@ -865,7 +903,7 @@
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">💬</span>
                     </div>
@@ -876,7 +914,7 @@
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📚</span>
                     </div>
@@ -887,7 +925,7 @@
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">🔢</span>
                     </div>
@@ -898,7 +936,7 @@
                 </div>
                 
                 <!-- Feature 5 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">📱</span>
                     </div>
@@ -909,7 +947,7 @@
                 </div>
                 
                 <!-- Feature 6 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-card">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
                     <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
                         <span class="text-2xl">✅</span>
                     </div>
@@ -936,9 +974,15 @@
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto scroll-reveal-stagger">
                 <!-- Free Tier -->
-                <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border-2 border-gray-200 hover-pricing-card hover-pricing-free">
+                <div class="pricing-card pricing-card-free bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border-2 border-gray-200" data-plan="free" role="button" tabindex="0" aria-label="Select Free plan">
+                    <!-- Selection indicator -->
+                    <div class="selection-indicator">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Free</h3>
+                        <h3 class="pricing-title text-xl font-bold text-gray-900 dark:text-white mb-1">Free</h3>
                         <p class="text-gray-600 dark:text-gray-200 text-sm">Perfect for getting started</p>
                     </div>
                     <div class="mb-6">
@@ -971,18 +1015,25 @@
                             Email support
                         </li>
                     </ul>
-                    <a href="#cta" class="block w-full bg-gray-200 hover:bg-gray-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-gray-900 dark:text-white text-center py-3 rounded-lg font-semibold transition hover-secondary-btn">
+                    <a href="#cta" class="block w-full bg-gray-200 hover:bg-gray-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-gray-900 dark:text-white text-center py-3 rounded-lg font-semibold transition">
                         Get Started Free
                     </a>
                 </div>
                 
                 <!-- Pro Tier -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-beam-500 relative card-shadow-lg hover-pricing-card hover-pricing-pro">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-beam-500 text-white px-4 py-1 rounded-full text-sm font-semibold popular-badge">
+                <div class="pricing-card pricing-card-pro selected bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-beam-500 relative card-shadow-lg" data-plan="pro" role="button" tabindex="0" aria-label="Select Pro plan">
+                    <!-- Most Popular badge with pulse animation -->
+                    <div class="popular-badge-animated absolute -top-3 left-1/2 -translate-x-1/2 bg-beam-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                         Most Popular
                     </div>
+                    <!-- Selection indicator -->
+                    <div class="selection-indicator">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Pro</h3>
+                        <h3 class="pricing-title text-xl font-bold text-gray-900 dark:text-white mb-1">Pro</h3>
                         <p class="text-gray-600 dark:text-gray-200 text-sm">For serious contractors</p>
                     </div>
                     <div class="mb-6">
@@ -1028,7 +1079,7 @@
                             Priority support
                         </li>
                     </ul>
-                    <a href="#cta" class="block w-full bg-beam-500 hover:bg-beam-600 text-white text-center py-3 rounded-lg font-semibold transition hover-cta-btn">
+                    <a href="#cta" class="block w-full bg-beam-500 hover:bg-beam-600 text-white text-center py-3 rounded-lg font-semibold transition">
                         Start 14-Day Free Trial
                     </a>
                 </div>
@@ -1040,85 +1091,167 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Testimonials Carousel Section -->
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800" aria-label="Customer testimonials">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                     Contractors love Beam
                 </h2>
-                <p class="text-lg text-gray-600">
+                <p class="text-lg text-gray-600 dark:text-gray-400">
                     Join 500+ tradespeople already saving hours every week
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-6 scroll-reveal-stagger">
-                <!-- Testimonial 1 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-testimonial">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
+            <!-- Carousel Container -->
+            <div class="testimonials-carousel relative scroll-reveal" role="region" aria-live="polite" aria-label="Testimonials carousel">
+                <!-- Testimonials Slides -->
+                <div class="testimonials-slides-container relative overflow-hidden min-h-[280px]">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out" data-index="0">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "I used to spend 45 minutes on each quote. Now it takes me 2 minutes. I've closed 3 more jobs this month just by being first to respond."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold">MR</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Mike Richardson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Plumber, Manchester</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-gray-700 mb-4">
-                        "I used to spend 45 minutes on each quote. Now it takes me 2 minutes. I've closed 3 more jobs this month just by being first to respond."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">MR</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Mike Richardson</p>
-                            <p class="text-gray-500 text-sm">Plumber, Manchester</p>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="1">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "My customers are impressed. They think I have this whole professional operation. Really it's just me and Beam on my phone."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-semibold">ST</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Sarah Thompson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Electrician, Birmingham</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="2">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "The SMS feature alone is worth it. I send a quote while walking to my truck and by the time I'm driving, I've got an approval."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">DL</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Dave Lewis</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Handyman, Leeds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="3">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "Finally got rid of my old spreadsheet system. Beam's templates are exactly what I needed. Professional and simple to use."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-semibold">JW</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">James Wilson</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Carpenter, Bristol</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0" data-index="4">
+                        <div class="bg-white dark:bg-slate-700 rounded-xl p-8 card-shadow">
+                            <div class="flex items-center gap-1 mb-6">
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                                <span class="text-yellow-400 text-xl">★</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                "I was skeptical at first, but Beam pays for itself. The time I save on paperwork means more time with my family. Can't put a price on that."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center text-white font-semibold">EH</div>
+                                <div>
+                                    <p class="font-semibold text-gray-900 dark:text-white">Emma Hughes</p>
+                                    <p class="text-gray-500 dark:text-gray-400">Painter, Liverpool</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-testimonial">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-center gap-3 mt-8">
+                    <!-- Previous Button -->
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Previous testimonial" data-action="prev">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Dot Indicators -->
+                    <div class="flex items-center gap-2" role="tablist" aria-label="Testimonial slides">
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-beam-500 transition-all duration-300" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="3" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="4" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
                     </div>
-                    <p class="text-gray-700 mb-4">
-                        "My customers are impressed. They think I have this whole professional operation. Really it's just me and Beam on my phone."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">ST</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Sarah Thompson</p>
-                            <p class="text-gray-500 text-sm">Electrician, Birmingham</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow hover-testimonial">
-                    <div class="flex items-center gap-1 mb-4">
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                        <span class="text-yellow-400">★</span>
-                    </div>
-                    <p class="text-gray-700 mb-4">
-                        "The SMS feature alone is worth it. I send a quote while walking to my truck and by the time I'm driving, I've got an approval."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">DL</div>
-                        <div>
-                            <p class="font-semibold text-gray-900 dark:text-white text-sm">Dave Lewis</p>
-                            <p class="text-gray-500 text-sm">Handyman, Leeds</p>
-                        </div>
-                    </div>
+                    
+                    <!-- Next Button -->
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Next testimonial" data-action="next">
+                        <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
             
             <div class="mt-12 text-center">
-                <p class="text-gray-500 text-sm">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">
                     <span class="font-semibold text-gray-900 dark:text-white">500+</span> contractors signed up in beta • 
                     <span class="font-semibold text-gray-900 dark:text-white">50,000+</span> quotes created • 
                     <span class="font-semibold text-gray-900 dark:text-white">$2M+</span> work quoted
@@ -1216,7 +1349,7 @@
                     required
                     class="flex-1 px-4 py-3 border-0 rounded-lg focus:ring-2 focus:ring-white focus:outline-none transition text-gray-900 dark:text-white"
                 >
-                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap hover-secondary-btn">
+                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
                     Get Started Free
                 </button>
             </form>
@@ -1629,6 +1762,253 @@
         // Initialize scroll reveal when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new ScrollReveal();
+        });
+    </script>
+    
+    <!-- Pricing Card Selection Script -->
+    <script>
+        class PricingCardSelection {
+            constructor() {
+                this.selectedPlan = 'pro'; // Default selection
+                this.pricingCards = document.querySelectorAll('.pricing-card');
+                this.init();
+            }
+            
+            init() {
+                this.pricingCards.forEach(card => {
+                    // Click handler
+                    card.addEventListener('click', (e) => {
+                        // Don't trigger if clicking on the CTA link
+                        if (e.target.tagName === 'A' || e.target.closest('a')) {
+                            return;
+                        }
+                        this.selectCard(card);
+                    });
+                    
+                    // Keyboard handler for accessibility
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.selectCard(card);
+                        }
+                    });
+                });
+                
+                // Set initial selection state
+                this.updateSelectionState();
+            }
+            
+            selectCard(card) {
+                const plan = card.dataset.plan;
+                
+                // Don't do anything if already selected
+                if (plan === this.selectedPlan) {
+                    return;
+                }
+                
+                // Add click animation
+                card.classList.add('clicking');
+                setTimeout(() => card.classList.remove('clicking'), 150);
+                
+                // Add ripple effect
+                card.classList.add('selecting');
+                setTimeout(() => card.classList.remove('selecting'), 600);
+                
+                // Update selection
+                this.selectedPlan = plan;
+                this.updateSelectionState();
+                
+                // Announce selection for screen readers
+                this.announceSelection(plan);
+            }
+            
+            updateSelectionState() {
+                this.pricingCards.forEach(card => {
+                    const isSelected = card.dataset.plan === this.selectedPlan;
+                    
+                    if (isSelected) {
+                        card.classList.add('selected');
+                        card.setAttribute('aria-pressed', 'true');
+                    } else {
+                        card.classList.remove('selected');
+                        card.setAttribute('aria-pressed', 'false');
+                    }
+                });
+            }
+            
+            announceSelection(plan) {
+                // Create a live region for screen reader announcements
+                let announcer = document.getElementById('pricing-announcer');
+                
+                if (!announcer) {
+                    announcer = document.createElement('div');
+                    announcer.id = 'pricing-announcer';
+                    announcer.setAttribute('aria-live', 'polite');
+                    announcer.setAttribute('aria-atomic', 'true');
+                    announcer.className = 'sr-only';
+                    announcer.style.cssText = 'position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;';
+                    document.body.appendChild(announcer);
+                }
+                
+                const planNames = {
+                    'free': 'Free plan',
+                    'pro': 'Pro plan'
+                };
+                
+                announcer.textContent = `${planNames[plan] || plan} selected`;
+            }
+        }
+        
+        // Initialize pricing card selection when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PricingCardSelection();
+        });
+    </script>
+
+    <!-- Testimonials Carousel Script -->
+    <script>
+        class TestimonialsCarousel {
+            constructor() {
+                this.currentIndex = 0;
+                this.totalSlides = 5;
+                this.autoRotateInterval = null;
+                this.autoRotateDelay = 5000; // 5 seconds
+                this.isPaused = false;
+                
+                this.slides = document.querySelectorAll('.testimonial-slide');
+                this.dots = document.querySelectorAll('.testimonial-dot');
+                this.prevBtn = document.querySelector('[data-action="prev"]');
+                this.nextBtn = document.querySelector('[data-action="next"]');
+                this.carousel = document.querySelector('.testimonials-carousel');
+                
+                this.init();
+            }
+            
+            init() {
+                // Auto-rotation
+                this.startAutoRotate();
+                
+                // Pause on hover
+                if (this.carousel) {
+                    this.carousel.addEventListener('mouseenter', () => this.pauseAutoRotate());
+                    this.carousel.addEventListener('mouseleave', () => this.resumeAutoRotate());
+                    // Also pause on focus for accessibility
+                    this.carousel.addEventListener('focusin', () => this.pauseAutoRotate());
+                    this.carousel.addEventListener('focusout', () => this.resumeAutoRotate());
+                }
+                
+                // Navigation buttons
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.previousSlide());
+                }
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+                
+                // Dot indicators
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+                
+                // Set initial state
+                this.updateSlides();
+            }
+            
+            startAutoRotate() {
+                this.stopAutoRotate();
+                this.autoRotateInterval = setInterval(() => {
+                    if (!this.isPaused) {
+                        this.nextSlide();
+                    }
+                }, this.autoRotateDelay);
+            }
+            
+            stopAutoRotate() {
+                if (this.autoRotateInterval) {
+                    clearInterval(this.autoRotateInterval);
+                    this.autoRotateInterval = null;
+                }
+            }
+            
+            pauseAutoRotate() {
+                this.isPaused = true;
+            }
+            
+            resumeAutoRotate() {
+                this.isPaused = false;
+            }
+            
+            nextSlide() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+                this.updateSlides();
+            }
+            
+            previousSlide() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+                this.updateSlides();
+            }
+            
+            goToSlide(index) {
+                if (index >= 0 && index < this.totalSlides) {
+                    this.currentIndex = index;
+                    this.updateSlides();
+                    // Reset auto-rotate timer when manually navigating
+                    this.startAutoRotate();
+                }
+            }
+            
+            updateSlides() {
+                // Update slides visibility with fade effect
+                this.slides.forEach((slide, index) => {
+                    if (index === this.currentIndex) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                        slide.setAttribute('aria-hidden', 'false');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                        slide.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Update dot indicators
+                this.dots.forEach((dot, index) => {
+                    if (index === this.currentIndex) {
+                        dot.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+                        dot.classList.add('bg-beam-500');
+                        dot.setAttribute('aria-selected', 'true');
+                    } else {
+                        dot.classList.remove('bg-beam-500');
+                        dot.classList.add('bg-gray-300', 'dark:bg-gray-600');
+                        dot.setAttribute('aria-selected', 'false');
+                    }
+                });
+            }
+            
+            handleKeyboard(e) {
+                // Only handle keyboard when carousel is in focus or a child is focused
+                if (!this.carousel.contains(document.activeElement)) {
+                    return;
+                }
+                
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.previousSlide();
+                    this.startAutoRotate(); // Reset timer
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextSlide();
+                    this.startAutoRotate(); // Reset timer
+                }
+            }
+        }
+        
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TestimonialsCarousel();
         });
     </script>
     
