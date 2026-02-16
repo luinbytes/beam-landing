@@ -614,9 +614,9 @@
 
             <!-- Right: Interactive Phone Mockup -->
             <div class="hidden md:block scroll-reveal revealed">
-                <div class="relative mx-auto" style="max-width: 320px;">
-                    <!-- Phone frame -->
-                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive">
+                <div class="relative mx-auto phone-mockup-fade-in" style="max-width: 320px;">
+                    <!-- Phone frame with animations -->
+                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive phone-mockup-animated phone-mockup-scroll-rotate" role="img" aria-label="Beam app preview on mobile phone">
                         <div class="bg-white dark:bg-slate-700 rounded-[2.5rem] overflow-hidden">
                             <!-- Status bar -->
                             <div class="bg-gray-100 dark:bg-slate-600 px-6 py-2 flex justify-between items-center text-xs text-gray-600">
@@ -1629,6 +1629,62 @@
         // Initialize scroll reveal when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new ScrollReveal();
+        });
+    </script>
+    
+    <!-- Phone Mockup Scroll Rotation Script -->
+    <script>
+        class PhoneMockupScroll {
+            constructor() {
+                this.phoneElement = document.querySelector('.phone-mockup-scroll-rotate');
+                this.lastScrollY = 0;
+                this.ticking = false;
+                this.init();
+            }
+            
+            init() {
+                if (!this.phoneElement) return;
+                
+                // Check for reduced motion preference
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) return;
+                
+                // Add scroll listener
+                window.addEventListener('scroll', () => {
+                    this.lastScrollY = window.scrollY;
+                    this.requestTick();
+                }, { passive: true });
+            }
+            
+            requestTick() {
+                if (!this.ticking) {
+                    requestAnimationFrame(() => {
+                        this.updateRotation();
+                        this.ticking = false;
+                    });
+                    this.ticking = true;
+                }
+            }
+            
+            updateRotation() {
+                // Calculate rotation based on scroll position
+                // Max rotation: 3 degrees
+                // Scroll range: 0 to 500px
+                const maxRotation = 3;
+                const scrollRange = 500;
+                const scrollProgress = Math.min(this.lastScrollY / scrollRange, 1);
+                
+                // Create subtle oscillating rotation effect
+                const rotation = Math.sin(scrollProgress * Math.PI) * maxRotation;
+                
+                // Apply rotation while preserving the float animation
+                this.phoneElement.style.transform = `rotate(${rotation}deg)`;
+            }
+        }
+        
+        // Initialize phone mockup scroll rotation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PhoneMockupScroll();
         });
     </script>
 </body>
