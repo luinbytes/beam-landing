@@ -237,6 +237,216 @@
                 transition: none;
             }
         }
+        
+        /* ===================================
+           PRICING CARD SELECTION ANIMATION
+           =================================== */
+        
+        /* Base selection state styles */
+        .pricing-card {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.3s ease;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 1.125rem; /* 18px - accounts for rounded-2xl padding */
+            background: transparent;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Selection ring effect */
+        .pricing-card.selected::before {
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.4);
+        }
+        
+        .dark .pricing-card.selected::before {
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.5);
+        }
+        
+        /* Selection glow effect */
+        .pricing-card.selected {
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.15),
+                        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .pricing-card.selected {
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.25),
+                        0 20px 25px -5px rgba(0, 0, 0, 0.3),
+                        0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Free card selection */
+        .pricing-card-free.selected {
+            border-color: #6b7280;
+        }
+        
+        .dark .pricing-card-free.selected {
+            border-color: #9ca3af;
+        }
+        
+        /* Pro card selection */
+        .pricing-card-pro.selected {
+            border-color: #ea580c;
+        }
+        
+        .dark .pricing-card-pro.selected {
+            border-color: #f97316;
+        }
+        
+        /* Selection checkmark indicator */
+        .pricing-card .selection-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        
+        .dark .pricing-card .selection-indicator {
+            border-color: #4b5563;
+        }
+        
+        .pricing-card:hover .selection-indicator {
+            opacity: 0.5;
+        }
+        
+        .pricing-card.selected .selection-indicator {
+            opacity: 1;
+            transform: scale(1);
+            background: #f97316;
+            border-color: #f97316;
+        }
+        
+        .pricing-card.selected .selection-indicator svg {
+            color: white;
+        }
+        
+        /* Selection checkmark animation */
+        @keyframes checkmark-pop {
+            0% { transform: scale(0.5) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(0deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        
+        .pricing-card.selected .selection-indicator svg {
+            animation: checkmark-pop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Most Popular badge - continuous pulse */
+        @keyframes badge-pulse-continuous {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+            }
+        }
+        
+        .popular-badge-animated {
+            animation: badge-pulse-continuous 2.5s ease-in-out infinite;
+        }
+        
+        /* Card click feedback */
+        @keyframes card-click {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+        
+        .pricing-card.clicking {
+            animation: card-click 0.15s ease-out;
+        }
+        
+        /* Selected state visual enhancement */
+        .pricing-card.selected .pricing-title {
+            color: #f97316;
+        }
+        
+        .dark .pricing-card.selected .pricing-title {
+            color: #fb923c;
+        }
+        
+        /* Selection ripple effect */
+        @keyframes selection-ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(249, 115, 22, 0);
+            }
+        }
+        
+        .pricing-card.selecting {
+            animation: selection-ripple 0.6s ease-out;
+        }
+        
+        /* Hover glow effect for pro card */
+        .pricing-card-pro:hover {
+            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.2), 
+                        0 15px 15px -5px rgba(0, 0, 0, 0.1),
+                        0 0 40px rgba(249, 115, 22, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .dark .pricing-card-pro:hover {
+            box-shadow: 0 25px 30px -5px rgba(249, 115, 22, 0.3), 
+                        0 15px 15px -5px rgba(0, 0, 0, 0.3),
+                        0 0 50px rgba(249, 115, 22, 0.2);
+        }
+        
+        /* Hover effect for free card */
+        .pricing-card-free:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #9ca3af;
+            transform: translateY(-4px);
+        }
+        
+        .dark .pricing-card-free:hover {
+            border-color: #6b7280;
+        }
+        
+        /* Reduced motion for selection effects */
+        @media (prefers-reduced-motion: reduce) {
+            .pricing-card,
+            .pricing-card::before,
+            .pricing-card .selection-indicator,
+            .popular-badge-animated {
+                transition: none;
+            }
+            
+            .pricing-card.selected .selection-indicator svg,
+            .pricing-card.clicking,
+            .pricing-card.selecting,
+            .popular-badge-animated {
+                animation: none;
+            }
+            
+            .pricing-card-pro:hover,
+            .pricing-card-free:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white dark:bg-slate-900 dark:text-slate-100">
@@ -661,9 +871,15 @@
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto scroll-reveal-stagger">
                 <!-- Free Tier -->
-                <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border-2 border-gray-200">
+                <div class="pricing-card pricing-card-free bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border-2 border-gray-200" data-plan="free" role="button" tabindex="0" aria-label="Select Free plan">
+                    <!-- Selection indicator -->
+                    <div class="selection-indicator">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Free</h3>
+                        <h3 class="pricing-title text-xl font-bold text-gray-900 dark:text-white mb-1">Free</h3>
                         <p class="text-gray-600 dark:text-gray-200 text-sm">Perfect for getting started</p>
                     </div>
                     <div class="mb-6">
@@ -702,12 +918,19 @@
                 </div>
                 
                 <!-- Pro Tier -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-beam-500 relative card-shadow-lg">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-beam-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                <div class="pricing-card pricing-card-pro selected bg-white dark:bg-slate-800 rounded-2xl p-8 border-2 border-beam-500 relative card-shadow-lg" data-plan="pro" role="button" tabindex="0" aria-label="Select Pro plan">
+                    <!-- Most Popular badge with pulse animation -->
+                    <div class="popular-badge-animated absolute -top-3 left-1/2 -translate-x-1/2 bg-beam-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                         Most Popular
                     </div>
+                    <!-- Selection indicator -->
+                    <div class="selection-indicator">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Pro</h3>
+                        <h3 class="pricing-title text-xl font-bold text-gray-900 dark:text-white mb-1">Pro</h3>
                         <p class="text-gray-600 dark:text-gray-200 text-sm">For serious contractors</p>
                     </div>
                     <div class="mb-6">
@@ -1354,6 +1577,106 @@
         // Initialize scroll reveal when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new ScrollReveal();
+        });
+    </script>
+
+    <!-- Pricing Card Selection Script -->
+    <script>
+        class PricingCardSelection {
+            constructor() {
+                this.selectedPlan = 'pro'; // Default selection
+                this.pricingCards = document.querySelectorAll('.pricing-card');
+                this.init();
+            }
+            
+            init() {
+                this.pricingCards.forEach(card => {
+                    // Click handler
+                    card.addEventListener('click', (e) => {
+                        // Don't trigger if clicking on the CTA link
+                        if (e.target.tagName === 'A' || e.target.closest('a')) {
+                            return;
+                        }
+                        this.selectCard(card);
+                    });
+                    
+                    // Keyboard handler for accessibility
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.selectCard(card);
+                        }
+                    });
+                });
+                
+                // Set initial selection state
+                this.updateSelectionState();
+            }
+            
+            selectCard(card) {
+                const plan = card.dataset.plan;
+                
+                // Don't do anything if already selected
+                if (plan === this.selectedPlan) {
+                    return;
+                }
+                
+                // Add click animation
+                card.classList.add('clicking');
+                setTimeout(() => card.classList.remove('clicking'), 150);
+                
+                // Add ripple effect
+                card.classList.add('selecting');
+                setTimeout(() => card.classList.remove('selecting'), 600);
+                
+                // Update selection
+                this.selectedPlan = plan;
+                this.updateSelectionState();
+                
+                // Announce selection for screen readers
+                this.announceSelection(plan);
+            }
+            
+            updateSelectionState() {
+                this.pricingCards.forEach(card => {
+                    const isSelected = card.dataset.plan === this.selectedPlan;
+                    
+                    if (isSelected) {
+                        card.classList.add('selected');
+                        card.setAttribute('aria-pressed', 'true');
+                    } else {
+                        card.classList.remove('selected');
+                        card.setAttribute('aria-pressed', 'false');
+                    }
+                });
+            }
+            
+            announceSelection(plan) {
+                // Create a live region for screen reader announcements
+                let announcer = document.getElementById('pricing-announcer');
+                
+                if (!announcer) {
+                    announcer = document.createElement('div');
+                    announcer.id = 'pricing-announcer';
+                    announcer.setAttribute('aria-live', 'polite');
+                    announcer.setAttribute('aria-atomic', 'true');
+                    announcer.className = 'sr-only';
+                    announcer.style.cssText = 'position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;';
+                    document.body.appendChild(announcer);
+                }
+                
+                const planNames = {
+                    'free': 'Free plan',
+                    'pro': 'Pro plan'
+                };
+                
+                announcer.textContent = `${planNames[plan] || plan} selected`;
+            }
+        }
+        
+        // Initialize pricing card selection when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new PricingCardSelection();
         });
     </script>
 </body>
