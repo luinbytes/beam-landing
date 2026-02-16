@@ -204,10 +204,10 @@
         /* Float animation - gentle up/down movement */
         @keyframes phone-float {
             0%, 100% { 
-                transform: translateY(0px);
+                transform: translateY(0px) rotate(var(--scroll-rotation, 0deg));
             }
             50% { 
-                transform: translateY(-15px);
+                transform: translateY(-15px) rotate(var(--scroll-rotation, 0deg));
             }
         }
         
@@ -266,9 +266,9 @@
             }
         }
         
-        /* Scroll-based rotation (controlled by JS) */
+        /* Scroll-based rotation (controlled by JS via CSS variable) */
         .phone-mockup-scroll-rotate {
-            transition: transform 0.1s ease-out;
+            --scroll-rotation: 0deg;
         }
         
         /* Responsive adjustments */
@@ -1677,8 +1677,8 @@
                 // Create subtle oscillating rotation effect
                 const rotation = Math.sin(scrollProgress * Math.PI) * maxRotation;
                 
-                // Apply rotation while preserving the float animation
-                this.phoneElement.style.transform = `rotate(${rotation}deg)`;
+                // Apply rotation via CSS custom property (doesn't override animation transform)
+                this.phoneElement.style.setProperty('--scroll-rotation', `${rotation}deg`);
             }
         }
         
