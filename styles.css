@@ -1,0 +1,201 @@
+/* Dark mode styles */
+.dark body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+.dark .hero-gradient {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: #d1d5db;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dark .dark-mode-toggle {
+    background-color: #f97316;
+}
+
+.dark-mode-toggle::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark .dark-mode-toggle::before {
+    transform: translateX(20px);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-gradient {
+    background: linear-gradient(135deg, #fff7ed 0%, #fff 50%, #fef3c7 100%);
+}
+
+.dark .hero-gradient {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+}
+
+.card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.card-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Interactive Preview Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes countUp {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse-green {
+    0%, 100% { background-color: #dcfce7; }
+    50% { background-color: #bbf7d0; }
+}
+
+@keyframes checkmark {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-count-up {
+    animation: countUp 0.3s ease-out;
+}
+
+.animate-pulse-green {
+    animation: pulse-green 0.6s ease-in-out;
+}
+
+.animate-checkmark {
+    animation: checkmark 0.4s ease-out;
+}
+
+.preview-step {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.preview-step.visible {
+    opacity: 1;
+}
+
+.line-item-row {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.line-item-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+}
+
+.total-update {
+    transition: all 0.3s ease-out;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    background-color: #f97316;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.phone-frame-interactive {
+    transition: transform 0.3s ease;
+}
+
+.phone-frame-interactive:hover {
+    transform: translateY(-4px);
+}
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animations for children */
+.scroll-reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.scroll-reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0s; }
+.scroll-reveal-stagger.revealed > *:nth-child(2) { transition-delay: 0.1s; }
+.scroll-reveal-stagger.revealed > *:nth-child(3) { transition-delay: 0.2s; }
+.scroll-reveal-stagger.revealed > *:nth-child(4) { transition-delay: 0.3s; }
+.scroll-reveal-stagger.revealed > *:nth-child(5) { transition-delay: 0.4s; }
+.scroll-reveal-stagger.revealed > *:nth-child(6) { transition-delay: 0.5s; }
+
+.scroll-reveal-stagger.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .scroll-reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
