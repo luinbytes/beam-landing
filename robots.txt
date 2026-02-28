@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luinbytes.github.io/beam-landing/sitemap.xml
