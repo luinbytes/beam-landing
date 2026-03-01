@@ -127,22 +127,38 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient pt-24 pb-16 md:pt-32 md:pb-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="hero-gradient hero-animated-bg pt-24 pb-16 md:pt-32 md:pb-24 relative">
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- Left: Copy -->
                 <div class="max-w-xl scroll-reveal-stagger revealed">
                     <div class="inline-flex items-center gap-2 bg-beam-100 text-beam-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
                         <span class="w-2 h-2 bg-beam-500 rounded-full animate-pulse"></span>
-                        Trusted by 500+ contractors
+                        <span id="live-contractor-count">500+</span> contractors already saving time
                 </div>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
                     Professional quotes in<br>
                     <span class="gradient-text">seconds, not hours</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-200 mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
                     Stop losing jobs to slow quotes. Create professional PDFs, send via SMS, and get approved faster. Built for plumbers, electricians, and contractors who want to win more work.
                 </p>
+
+                <!-- Live counter -->
+                <div class="flex items-center gap-3 mb-8 live-counter">
+                    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <span class="counter-number" id="quote-counter">50,000</span>+ quotes created so far
+                    </div>
+                </div>
                 
                 <!-- Email Capture -->
                 <form action="https://formspree.io/f/xeelgggn" method="POST" id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8">
@@ -183,17 +199,19 @@
 
             <!-- Right: Interactive Phone Mockup -->
             <div class="hidden md:block scroll-reveal revealed">
-                <div class="relative mx-auto phone-mockup-fade-in" style="max-width: 320px;">
+                <div class="relative mx-auto phone-mockup-fade-in phone-mockup-enhanced" style="max-width: 320px;">
                     <!-- Phone frame with animations -->
-                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive phone-mockup-animated phone-mockup-scroll-rotate" role="img" aria-label="Beam app preview on mobile phone">
-                        <div class="bg-white dark:bg-slate-700 rounded-[2.5rem] overflow-hidden">
+                    <div class="bg-gray-900 rounded-[3rem] p-3 shadow-2xl phone-frame-interactive phone-mockup-animated" role="img" aria-label="Beam app preview on mobile phone">
+                        <!-- Notch -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+                        <div class="bg-white dark:bg-slate-700 rounded-[2.5rem] overflow-hidden relative">
                             <!-- Status bar -->
-                            <div class="bg-gray-100 dark:bg-slate-600 px-6 py-2 flex justify-between items-center text-xs text-gray-600">
-                                <span>9:41</span>
-                                <div class="flex gap-1">
+                            <div class="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-slate-600 dark:to-slate-700 px-6 py-2 flex justify-between items-center text-xs text-gray-600 dark:text-gray-300">
+                                <span class="font-medium">9:41</span>
+                                <div class="flex items-center gap-1">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 100-2 2 2 0 100 2z" clip-rule="evenodd"/></svg>
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a.75.75 0 01.75.75v.258a33.186 33.186 0 016.668.83.75.75 0 01-.336 1.461 31.28 31.28 0 00-1.103-.232l1.702 7.545a.75.75 0 01-.387.832A4.981 4.981 0 0115 14c-.825 0-1.606-.2-2.294-.556a.75.75 0 01-.387-.832l1.77-7.849a31.743 31.743 0 00-3.339-.254v11.505l6.5.001a.75.75 0 010 1.5h-14a.75.75 0 010-1.5l6.5-.001V4.509c-1.14.025-2.256.096-3.34.254l1.771 7.85a.75.75 0 01-.387.83A4.98 4.98 0 015 14a4.98 4.98 0 01-2.294-.556.75.75 0 01-.387-.832L4.02 5.067c-.374.06-.743.125-1.103.232a.75.75 0 01-.336-1.462 33.053 33.053 0 016.668-.829V2.75A.75.75 0 0110 2z"/></svg>
+                                    <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a.75.75 0 01.75.75v.258a33.186 33.186 0 016.668.83.75.75 0 01-.336 1.461 31.28 31.28 0 00-1.103-.232l1.702 7.545a.75.75 0 01-.387.832A4.981 4.981 0 0115 14c-.825 0-1.606-.2-2.294-.556a.75.75 0 01-.387-.832l1.77-7.849a31.743 31.743 0 00-3.339-.254v11.505l6.5.001a.75.75 0 010 1.5h-14a.75.75 0 010-1.5l6.5-.001V4.509c-1.14.025-2.256.096-3.34.254l1.771 7.85a.75.75 0 01-.387.83A4.98 4.98 0 015 14a4.98 4.98 0 01-2.294-.556.75.75 0 01-.387-.832L4.02 5.067c-.374.06-.743.125-1.103.232a.75.75 0 01-.336-1.462 33.053 33.053 0 016.668-.829V2.75A.75.75 0 0110 2z"/></svg>
                                 </div>
                             </div>
                             
@@ -291,9 +309,18 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Decorative elements -->
-                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-beam-200 rounded-full opacity-50 blur-xl"></div>
-                    <div class="absolute -top-4 -left-4 w-16 h-16 bg-beam-300 rounded-full opacity-40 blur-lg"></div>
+                    <!-- Enhanced decorative elements -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-beam-200 to-beam-300 rounded-full opacity-60 blur-2xl animate-pulse"></div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-beam-300 to-orange-200 rounded-full opacity-50 blur-xl"></div>
+                    <div class="absolute bottom-1/3 -right-8 w-16 h-16 bg-beam-400 rounded-full opacity-30 blur-lg"></div>
+
+                    <!-- Floating badge -->
+                    <div class="absolute -right-4 top-1/4 bg-white dark:bg-slate-800 rounded-lg shadow-lg px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-200 animate-bounce">
+                        <span class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            98% open rate
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -409,6 +436,126 @@
         </div>
     </section>
 
+    <!-- Traditional vs Beam Comparison Section -->
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    The old way vs. the Beam way
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-200">
+                    See why contractors are making the switch
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 scroll-reveal-stagger">
+                <!-- Traditional Way -->
+                <div class="bg-white dark:bg-slate-700 rounded-2xl p-6 md:p-8 border-2 border-gray-200 dark:border-slate-600">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-gray-100 dark:bg-slate-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">The Old Way</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">How most contractors still do it</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">30+ minutes</strong> per quote in Word or Excel</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Templates that <strong class="text-gray-900 dark:text-white">break and need fixing</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Quotes sent via email — <strong class="text-gray-900 dark:text-white">often ignored</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">No idea</strong> if customer even saw the quote</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Lose jobs</strong> to faster competitors</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Beam Way -->
+                <div class="bg-gradient-to-br from-beam-50 to-white dark:from-slate-700 dark:to-slate-700 rounded-2xl p-6 md:p-8 border-2 border-beam-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-beam-500/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="flex items-center gap-3 mb-6 relative">
+                        <div class="w-12 h-12 bg-beam-500 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">The Beam Way</h3>
+                            <p class="text-beam-600 text-sm font-medium">Fast, professional, tracked</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 relative">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Under 60 seconds</strong> to create any quote</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">Templates that <strong class="text-gray-900 dark:text-white">just work</strong> — every time</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300">SMS delivery — <strong class="text-gray-900 dark:text-white">98% open rate</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Instant notifications</strong> when viewed & approved</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Win more jobs</strong> by being first to respond</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Time/Money saved callout -->
+            <div class="mt-12 bg-white dark:bg-slate-700 rounded-2xl p-6 md:p-8 text-center card-shadow scroll-reveal">
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+                    <span class="font-bold text-gray-900 dark:text-white">Average time saved:</span> 3+ hours per week
+                    <span class="mx-3 text-gray-300 dark:text-gray-600">|</span>
+                    <span class="font-bold text-gray-900 dark:text-white">That's £150+/month</span> in saved time alone
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section id="features" class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -423,8 +570,8 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-reveal-stagger">
                 <!-- Feature 1 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">📄</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional PDFs</h3>
@@ -432,10 +579,10 @@
                         Clean, branded quotes that look like you spent hours on them. Your logo, your colors, your business info.
                     </p>
                 </div>
-                
+
                 <!-- Feature 2 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">💬</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">SMS Delivery</h3>
@@ -443,10 +590,10 @@
                         Send quotes straight to your customer's phone. 98% open rate. Instant delivery. No email lag.
                     </p>
                 </div>
-                
+
                 <!-- Feature 3 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">📚</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Template Library</h3>
@@ -454,10 +601,10 @@
                         Start with proven templates for your trade. Customize once, reuse forever. Save hours every week.
                     </p>
                 </div>
-                
+
                 <!-- Feature 4 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">🔢</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Simple Line Items</h3>
@@ -465,10 +612,10 @@
                         Add materials, labor, and misc costs with a tap. Auto-calculating totals, taxes, and margins. No math required.
                     </p>
                 </div>
-                
+
                 <!-- Feature 5 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">📱</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Mobile-First</h3>
@@ -476,16 +623,68 @@
                         Works great on your phone. Create and send quotes from the job site, your truck, or anywhere.
                     </p>
                 </div>
-                
+
                 <!-- Feature 6 -->
-                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow">
-                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4">
+                <div class="bg-white dark:bg-slate-700 rounded-xl p-6 card-shadow feature-card-enhanced">
+                    <div class="w-12 h-12 bg-beam-100 rounded-xl flex items-center justify-center mb-4 feature-icon-bounce">
                         <span class="text-2xl">✅</span>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Approval Tracking</h3>
                     <p class="text-gray-600 dark:text-gray-200 text-sm">
                         Know when customers view and approve your quotes. Follow up at the right time. Close more deals.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-12 bg-white dark:bg-slate-900 border-y border-gray-100 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <div class="trust-badge flex items-center gap-3 text-gray-500 dark:text-gray-400">
+                    <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">SSL Secured</span>
+                </div>
+
+                <div class="trust-badge flex items-center gap-3 text-gray-500 dark:text-gray-400">
+                    <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">🇬🇧 UK-Based</span>
+                </div>
+
+                <div class="trust-badge flex items-center gap-3 text-gray-500 dark:text-gray-400">
+                    <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">GDPR Compliant</span>
+                </div>
+
+                <div class="trust-badge flex items-center gap-3 text-gray-500 dark:text-gray-400">
+                    <div class="w-10 h-10 bg-beam-100 dark:bg-beam-900/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-beam-600 dark:text-beam-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">24/7 Support</span>
+                </div>
+
+                <div class="trust-badge flex items-center gap-3 text-gray-500 dark:text-gray-400">
+                    <div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium">4.8★ Rating</span>
                 </div>
             </div>
         </div>
@@ -941,5 +1140,27 @@
     </footer>
 
     <script src="app.js"></script>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="sticky-cta">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <span class="text-gray-900 dark:text-white font-semibold hidden sm:inline">Ready to quote faster?</span>
+                <span class="text-gray-600 dark:text-gray-300 text-sm">Join 500+ contractors saving time</span>
+            </div>
+            <form action="https://formspree.io/f/xeelgggn" method="POST" class="flex gap-2 w-full sm:w-auto">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                    class="flex-1 sm:w-56 px-3 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+                >
+                <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-semibold text-sm transition whitespace-nowrap">
+                    Get Started Free
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

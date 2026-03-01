@@ -344,3 +344,121 @@ class ScrollReveal {
 document.addEventListener('DOMContentLoaded', () => {
     new ScrollReveal();
 });
+
+// Live Counter Animation
+class LiveCounter {
+    constructor() {
+        this.counterEl = document.getElementById('quote-counter');
+        this.startValue = 50000;
+        this.currentValue = this.startValue;
+        this.incrementInterval = null;
+
+        if (this.counterEl) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Start with animated count up
+        this.animateCountUp();
+
+        // Then slowly increment over time
+        this.incrementInterval = setInterval(() => {
+            this.incrementCounter();
+        }, 8000); // Every 8 seconds
+    }
+
+    animateCountUp() {
+        const duration = 2000; // 2 seconds
+        const steps = 50;
+        const increment = Math.floor(this.startValue / steps);
+        let current = 0;
+        let step = 0;
+
+        const timer = setInterval(() => {
+            step++;
+            current = Math.min(increment * step, this.startValue);
+            this.counterEl.textContent = this.formatNumber(current);
+
+            if (current >= this.startValue) {
+                clearInterval(timer);
+            }
+        }, duration / steps);
+    }
+
+    incrementCounter() {
+        // Random increment between 1-5
+        const increment = Math.floor(Math.random() * 5) + 1;
+        this.currentValue += increment;
+
+        // Add updating class for animation
+        this.counterEl.classList.add('updating');
+
+        setTimeout(() => {
+            this.counterEl.textContent = this.formatNumber(this.currentValue);
+            this.counterEl.classList.remove('updating');
+        }, 100);
+    }
+
+    formatNumber(num) {
+        return num.toLocaleString();
+    }
+}
+
+// Sticky CTA Bar
+class StickyCTA {
+    constructor() {
+        this.stickyCta = document.getElementById('sticky-cta');
+        this.heroSection = document.querySelector('.hero-gradient');
+        this.isVisible = false;
+
+        if (this.stickyCta && this.heroSection) {
+            this.init();
+        }
+    }
+
+    init() {
+        // Create intersection observer for hero section
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When hero is NOT visible (scrolled past), show sticky CTA
+                if (!entry.isIntersecting && window.scrollY > 100) {
+                    this.show();
+                } else {
+                    this.hide();
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0
+        });
+
+        observer.observe(this.heroSection);
+
+        // Also listen to scroll for more responsive behavior
+        window.addEventListener('scroll', () => {
+            const heroBottom = this.heroSection.getBoundingClientRect().bottom;
+            if (heroBottom < 0 && !this.isVisible) {
+                this.show();
+            } else if (heroBottom >= 0 && this.isVisible) {
+                this.hide();
+            }
+        });
+    }
+
+    show() {
+        this.stickyCta.classList.add('visible');
+        this.isVisible = true;
+    }
+
+    hide() {
+        this.stickyCta.classList.remove('visible');
+        this.isVisible = false;
+    }
+}
+
+// Initialize live counter and sticky CTA when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new LiveCounter();
+    new StickyCTA();
+});
