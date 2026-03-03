@@ -4,10 +4,6 @@
     color: #e2e8f0;
 }
 
-.dark .hero-gradient {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
-}
-
 /* Dark mode toggle button */
 .dark-mode-toggle {
     position: relative;
@@ -348,6 +344,11 @@
     transform: translateY(100%);
     transition: transform 0.3s ease;
     z-index: 40;
+}
+
+.sticky-cta.dismissed {
+    transform: translateY(100%) !important;
+    pointer-events: none;
 }
 
 .dark .sticky-cta {

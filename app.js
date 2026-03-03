@@ -119,7 +119,7 @@ class QuotePreviewDemo {
         if (window.innerWidth >= 768) {
             setTimeout(() => {
                 if (!this.isAnimating && this.currentStep === 1) {
-                    // Don't auto-start, let user click
+                    this.startDemo();
                 }
             }, 2000);
         }
@@ -461,4 +461,15 @@ class StickyCTA {
 document.addEventListener('DOMContentLoaded', () => {
     new LiveCounter();
     new StickyCTA();
+
+    // Dismiss sticky CTA
+    const dismissBtn = document.getElementById('dismiss-sticky-cta');
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', () => {
+            const stickyCta = document.getElementById('sticky-cta');
+            if (stickyCta) {
+                stickyCta.classList.add('dismissed');
+            }
+        });
+    }
 });
