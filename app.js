@@ -501,3 +501,84 @@ class FAQAccordion {
 document.addEventListener('DOMContentLoaded', () => {
     new FAQAccordion();
 });
+
+// Social Proof Counter Manager
+// Easy to update - just call SocialProofCounter.updateCount(newCount)
+class SocialProofCounter {
+    constructor() {
+        this.countEl = document.getElementById('waitlist-count');
+        this.currentCount = 0;
+        this.targetCount = 0; // Set this to actual waitlist count when available
+
+        // Message templates based on count
+        this.messages = {
+            zero: 'Be among the first',
+            few: 'Join {count} early adopters',
+            growing: 'Join {count} contractors waiting',
+            established: 'Join {count}+ contractors'
+        };
+
+        if (this.countEl) {
+            this.init();
+        }
+    }
+
+    init() {
+        if (this.targetCount > 0) {
+            this.animateCountUp();
+        }
+    }
+
+    // Call this to update the count dynamically
+    updateCount(newCount) {
+        this.targetCount = newCount;
+        this.animateCountUp();
+    }
+
+    animateCountUp() {
+        const duration = 1500;
+        const steps = 40;
+        const increment = this.targetCount / steps;
+        let current = 0;
+        let step = 0;
+
+        const timer = setInterval(() => {
+            step++;
+            current = Math.min(Math.round(increment * step), this.targetCount);
+            this.updateDisplay(current);
+
+            if (current >= this.targetCount) {
+                clearInterval(timer);
+            }
+        }, duration / steps);
+    }
+
+    updateDisplay(count) {
+        if (!this.countEl) return;
+
+        let message;
+        if (count === 0) {
+            message = this.messages.zero;
+        } else if (count < 10) {
+            message = this.messages.few.replace('{count}', count);
+        } else if (count < 100) {
+            message = this.messages.growing.replace('{count}', count);
+        } else {
+            message = this.messages.established.replace('{count}', count);
+        }
+
+        this.countEl.textContent = message;
+        this.currentCount = count;
+    }
+
+    // Get current count (useful for analytics)
+    getCount() {
+        return this.currentCount;
+    }
+}
+
+// Initialize social proof counter
+const socialProofCounter = new SocialProofCounter();
+
+// Expose globally for easy updates
+window.SocialProofCounter = socialProofCounter;
