@@ -473,3 +473,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// FAQ Accordion Enhancement
+class FAQAccordion {
+    constructor() {
+        this.faqItems = document.querySelectorAll('.faq-item');
+        this.init();
+    }
+
+    init() {
+        this.faqItems.forEach(item => {
+            item.addEventListener('toggle', (e) => {
+                if (item.open) {
+                    // Close other items when one opens (accordion behavior)
+                    this.faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.open) {
+                            otherItem.open = false;
+                        }
+                    });
+                }
+            });
+        });
+    }
+}
+
+// Initialize FAQ accordion when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new FAQAccordion();
+});

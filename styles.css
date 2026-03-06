@@ -537,3 +537,52 @@
     0%, 100% { transform: translateX(-100%) rotate(45deg); }
     50% { transform: translateX(100%) rotate(45deg); }
 }
+
+/* FAQ Accordion Styles */
+.faq-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.faq-item summary {
+    transition: background-color 0.2s ease;
+}
+
+.faq-item summary:hover {
+    background-color: rgba(249, 115, 22, 0.05);
+}
+
+.dark .faq-item summary:hover {
+    background-color: rgba(249, 115, 22, 0.1);
+}
+
+.faq-item[open] summary {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .faq-item[open] summary {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.faq-item .px-5.pb-5 {
+    animation: faq-content-fade-in 0.3s ease-out;
+}
+
+@keyframes faq-content-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
