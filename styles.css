@@ -1,3 +1,34 @@
+/* Feature Highlights Section Styles */
+.feature-highlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f97316, #ea580c);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.feature-highlight-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-highlight-icon {
+    box-shadow: 0 4px 14px -3px rgba(249, 115, 22, 0.4);
+}
+
+.feature-highlight-card:hover .feature-highlight-icon {
+    box-shadow: 0 6px 20px -3px rgba(249, 115, 22, 0.5);
+}
+
 /* Dark mode styles */
 .dark body {
     background-color: #0f172a;
@@ -637,4 +668,15 @@
 
 .early-adopter-badge {
     animation: early-adopter-pulse 2s ease-in-out infinite;
+}
+
+/* Performance optimization: content-visibility for below-fold sections */
+#social-proof,
+#features,
+#pricing,
+#faq,
+section[aria-label="Customer testimonials"],
+.sticky-cta {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
 }

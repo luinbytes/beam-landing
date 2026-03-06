@@ -582,3 +582,45 @@ const socialProofCounter = new SocialProofCounter();
 
 // Expose globally for easy updates
 window.SocialProofCounter = socialProofCounter;
+
+// Feature Highlights - Keyboard Navigation Enhancement
+class FeatureHighlightsA11y {
+    constructor() {
+        this.featureCards = document.querySelectorAll('.feature-highlight-card');
+        this.init();
+    }
+
+    init() {
+        // Make feature cards focusable and add keyboard interaction
+        this.featureCards.forEach(card => {
+            // Add tabindex for keyboard navigation
+            card.setAttribute('tabindex', '0');
+
+            // Add focus/blur visual feedback
+            card.addEventListener('focus', () => {
+                card.classList.add('ring-2', 'ring-beam-500', 'ring-offset-2', 'dark:ring-offset-slate-900');
+            });
+
+            card.addEventListener('blur', () => {
+                card.classList.remove('ring-2', 'ring-beam-500', 'ring-offset-2', 'dark:ring-offset-slate-900');
+            });
+
+            // Add keyboard activation feedback
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    // Simulate hover effect on keyboard activation
+                    card.classList.add('feature-highlight-card-active');
+                    setTimeout(() => {
+                        card.classList.remove('feature-highlight-card-active');
+                    }, 300);
+                }
+            });
+        });
+    }
+}
+
+// Initialize feature highlights accessibility when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new FeatureHighlightsA11y();
+});
