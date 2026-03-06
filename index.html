@@ -147,13 +147,13 @@
                     <span class="text-xl font-bold text-gray-900 dark:text-white">Beam</span>
                 </div>
                 <div class="hidden md:flex items-center gap-6">
-                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" data-track="click" data-action="toggle-dark-mode" data-label="dark-mode-desktop"></button>
                     <a href="#features" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">Features</a>
                     <a href="#pricing" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">Pricing</a>
                     <a href="#faq" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white transition">FAQ</a>
                     <a href="#cta" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-medium transition btn-lift">Get Started Free</a>
                 </div>
-                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" data-track="click" data-action="toggle-mobile-menu" data-label="mobile-menu-hamburger">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -165,7 +165,7 @@
             <div class="px-4 py-4 space-y-3">
                 <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-600">
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Dark Mode</span>
-                    <button id="dark-mode-toggle-mobile" class="dark-mode-toggle" aria-label="Toggle dark mode"></button>
+                    <button id="dark-mode-toggle-mobile" class="dark-mode-toggle" aria-label="Toggle dark mode" data-track="click" data-action="toggle-dark-mode" data-label="dark-mode-mobile"></button>
                 </div>
                 <a href="#features" class="block text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white">Features</a>
                 <a href="#pricing" class="block text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white">Pricing</a>
@@ -176,7 +176,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient hero-animated-bg pt-24 pb-16 md:pt-32 md:pb-24 relative">
+    <section class="hero-gradient hero-animated-bg pt-24 pb-16 md:pt-32 md:pb-24 relative" data-section="hero">
         <!-- Floating particles -->
         <div class="particle"></div>
         <div class="particle"></div>
@@ -210,15 +210,17 @@
                 </div>
                 
                 <!-- Email Capture -->
-                <form action="https://formspree.io/f/xeelgggn" method="POST" id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mb-8">
-                    <input 
-                        type="email" 
+                <form action="https://formspree.io/f/xeelgggn" method="POST" id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mb-8" data-form="signup" data-section="hero">
+                    <input
+                        type="email"
                         name="email"
-                        placeholder="Enter your email" 
+                        placeholder="Enter your email"
                         required
                         class="flex-1 px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none transition bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                        data-field="email"
+                        data-event="form_focus"
                     >
-                    <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap btn-lift cta-glow">
+                    <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap btn-lift cta-glow" data-track="click" data-action="cta-primary" data-event="form_submit" data-label="hero-start-free">
                         Start Free →
                     </button>
                 </form>
@@ -279,7 +281,7 @@
                                         <div class="text-xs text-gray-400">Click "See how it works" to start</div>
                                     </div>
                                     <div class="pt-4 text-center">
-                                        <button id="start-demo" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                                        <button id="start-demo" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition" data-track="click" data-action="demo-start" data-label="hero-demo-button">
                                             See how it works →
                                         </button>
                                     </div>
@@ -376,7 +378,7 @@
     </section>
 
     <!-- Feature Highlights Section -->
-    <section id="feature-highlights" class="py-16 md:py-24 bg-white dark:bg-slate-900" aria-labelledby="feature-highlights-title">
+    <section id="feature-highlights" class="py-16 md:py-24 bg-white dark:bg-slate-900" aria-labelledby="feature-highlights-title" data-section="feature-highlights">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 id="feature-highlights-title" class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -470,7 +472,7 @@
     </section>
 
     <!-- Social Proof Section -->
-    <section id="social-proof" class="py-12 md:py-16 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <section id="social-proof" class="py-12 md:py-16 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800" data-section="social-proof">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center scroll-reveal">
                 <!-- Main social proof message -->
@@ -757,7 +759,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800">
+    <section id="features" class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800" data-section="features">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -891,7 +893,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+    <section id="pricing" class="py-16 md:py-24 bg-white dark:bg-slate-900" data-section="pricing">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1022,7 +1024,7 @@
     </section>
 
     <!-- Testimonials Carousel Section -->
-    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800" aria-label="Customer testimonials">
+    <section class="py-16 md:py-24 bg-gray-50 dark:bg-slate-800" aria-label="Customer testimonials" data-section="testimonials">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1156,7 +1158,7 @@
                 <!-- Navigation Controls -->
                 <div class="flex items-center justify-center gap-3 mt-8">
                     <!-- Previous Button -->
-                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Previous testimonial" data-action="prev">
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Previous testimonial" data-action="prev" data-track="click" data-label="testimonial-prev">
                         <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
@@ -1164,15 +1166,15 @@
                     
                     <!-- Dot Indicators -->
                     <div class="flex items-center gap-2" role="tablist" aria-label="Testimonial slides">
-                        <button class="testimonial-dot w-2 h-2 rounded-full bg-beam-500 transition-all duration-300" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
-                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
-                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
-                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="3" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
-                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="4" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-beam-500 transition-all duration-300" data-index="0" role="tab" aria-selected="true" aria-label="Testimonial 1" data-track="click" data-action="testimonial-dot" data-label="testimonial-1"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="1" role="tab" aria-selected="false" aria-label="Testimonial 2" data-track="click" data-action="testimonial-dot" data-label="testimonial-2"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="2" role="tab" aria-selected="false" aria-label="Testimonial 3" data-track="click" data-action="testimonial-dot" data-label="testimonial-3"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="3" role="tab" aria-selected="false" aria-label="Testimonial 4" data-track="click" data-action="testimonial-dot" data-label="testimonial-4"></button>
+                        <button class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300" data-index="4" role="tab" aria-selected="false" aria-label="Testimonial 5" data-track="click" data-action="testimonial-dot" data-label="testimonial-5"></button>
                     </div>
                     
                     <!-- Next Button -->
-                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Next testimonial" data-action="next">
+                    <button class="testimonial-nav-btn p-2 rounded-full bg-white dark:bg-slate-700 card-shadow hover:shadow-lg transition-shadow" aria-label="Next testimonial" data-action="next" data-track="click" data-label="testimonial-next">
                         <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
@@ -1191,7 +1193,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 md:py-24 bg-white dark:bg-slate-900">
+    <section id="faq" class="py-16 md:py-24 bg-white dark:bg-slate-900" data-section="faq">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 scroll-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1304,7 +1306,7 @@
     </section>
 
     <!-- Final CTA -->
-    <section id="cta" class="py-16 md:py-24 bg-gradient-to-br from-beam-500 to-beam-600">
+    <section id="cta" class="py-16 md:py-24 bg-gradient-to-br from-beam-500 to-beam-600" data-section="cta">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to quote faster and win more jobs?
@@ -1313,15 +1315,17 @@
                 Join 500+ contractors who've already switched to Beam. Free to start, no credit card required.
             </p>
             
-            <form action="https://formspree.io/f/xeelgggn" method="POST" id="cta-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
-                <input 
-                    type="email" 
+            <form action="https://formspree.io/f/xeelgggn" method="POST" id="cta-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6" data-form="signup" data-section="cta">
+                <input
+                    type="email"
                     name="email"
-                    placeholder="Enter your email" 
+                    placeholder="Enter your email"
                     required
                     class="flex-1 px-4 py-3 border-0 rounded-lg focus:ring-2 focus:ring-white focus:outline-none transition bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400"
+                    data-field="email"
+                    data-event="form_focus"
                 >
-                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap">
+                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition whitespace-nowrap" data-track="click" data-action="cta-secondary" data-event="form_submit" data-label="cta-get-started">
                     Get Started Free
                 </button>
             </form>
@@ -1386,22 +1390,24 @@
     <!-- Sticky CTA Bar -->
     <div class="sticky-cta" id="sticky-cta">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 relative">
-            <button id="dismiss-sticky-cta" class="absolute -top-1 right-0 sm:static sm:order-last p-1.5 rounded-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition" aria-label="Dismiss">
+            <button id="dismiss-sticky-cta" class="absolute -top-1 right-0 sm:static sm:order-last p-1.5 rounded-full text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition" aria-label="Dismiss" data-track="click" data-action="dismiss" data-label="sticky-cta-dismiss">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
             <div class="flex items-center gap-3">
                 <span class="text-gray-900 dark:text-white font-semibold hidden sm:inline">Ready to quote faster?</span>
                 <span class="text-gray-600 dark:text-gray-300 text-sm">Join 500+ contractors saving time</span>
             </div>
-            <form action="https://formspree.io/f/xeelgggn" method="POST" class="flex gap-2 w-full sm:w-auto">
+            <form action="https://formspree.io/f/xeelgggn" method="POST" class="flex gap-2 w-full sm:w-auto" data-form="signup" data-section="sticky-cta">
                 <input
                     type="email"
                     name="email"
                     placeholder="Enter your email"
                     required
                     class="flex-1 sm:w-56 px-3 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-beam-500 focus:border-beam-500 outline-none bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
+                    data-field="email"
+                    data-event="form_focus"
                 >
-                <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-semibold text-sm transition whitespace-nowrap">
+                <button type="submit" class="bg-beam-500 hover:bg-beam-600 text-white px-4 py-2 rounded-lg font-semibold text-sm transition whitespace-nowrap" data-track="click" data-action="cta-sticky" data-event="form_submit" data-label="sticky-cta-submit">
                     Get Started Free
                 </button>
             </form>

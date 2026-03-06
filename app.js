@@ -1,3 +1,119 @@
+/**
+ * Analytics Helper
+ * Ready for integration with Plausible, Fathom, or similar analytics tools
+ * No actual tracking is performed - this is a placeholder for future implementation
+ */
+const BeamAnalytics = {
+    /**
+     * Track a custom event
+     * @param {string} eventName - Name of the event to track
+     * @param {Object} properties - Additional properties to include
+     */
+    track(eventName, properties = {}) {
+        // Ready for analytics integration
+        // Examples:
+        // Plausible: plausible(eventName, { props: properties })
+        // Fathom: fathom.trackGoal(eventName, 0)
+        // Custom: send to your own analytics endpoint
+
+        if (window.DEBUG_ANALYTICS) {
+            console.log('[Analytics]', eventName, properties);
+        }
+    },
+
+    /**
+     * Track a click event from a data-track element
+     * @param {HTMLElement} element - The clicked element
+     */
+    trackClick(element) {
+        const action = element.dataset.action || 'click';
+        const label = element.dataset.label || element.textContent?.trim() || 'unknown';
+        const section = element.closest('[data-section]')?.dataset.section || 'unknown';
+
+        this.track('click', {
+            action,
+            label,
+            section
+        });
+    },
+
+    /**
+     * Track form submission
+     * @param {HTMLFormElement} form - The submitted form
+     */
+    trackFormSubmit(form) {
+        const formName = form.dataset.form || 'unknown';
+        const section = form.dataset.section || element.closest('[data-section]')?.dataset.section || 'unknown';
+
+        this.track('form_submit', {
+            form: formName,
+            section
+        });
+    },
+
+    /**
+     * Track scroll depth when a section comes into view
+     * @param {string} sectionName - Name of the section
+     */
+    trackSectionView(sectionName) {
+        this.track('section_view', {
+            section: sectionName
+        });
+    },
+
+    /**
+     * Initialize click tracking on all data-track elements
+     */
+    initClickTracking() {
+        document.addEventListener('click', (e) => {
+            const trackable = e.target.closest('[data-track]');
+            if (trackable) {
+                this.trackClick(trackable);
+            }
+        });
+    },
+
+    /**
+     * Initialize section view tracking using Intersection Observer
+     */
+    initSectionTracking() {
+        const sections = document.querySelectorAll('[data-section]');
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.trackSectionView(entry.target.dataset.section);
+                    // Only track once per section
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+    },
+
+    /**
+     * Initialize all analytics tracking
+     */
+    init() {
+        this.initClickTracking();
+        this.initSectionTracking();
+
+        if (window.DEBUG_ANALYTICS) {
+            console.log('[Analytics] Initialized (debug mode)');
+        }
+    }
+};
+
+// Initialize analytics when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    BeamAnalytics.init();
+});
+
+// Expose globally for manual tracking calls
+window.BeamAnalytics = BeamAnalytics;
+
 // Dark mode initialization
 const html = document.documentElement;
 const toggle = document.getElementById('dark-mode-toggle');
